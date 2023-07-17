@@ -1,0 +1,111 @@
+{
+	"env": {
+		"es6": true
+	},
+	"extends": ["plugin:prettier/recommended", "prettier"],
+	"globals": {
+		"Atomics": "readonly",
+		"SharedArrayBuffer": "readonly"
+	},
+	"parserOptions": {
+		"sourceType": "module"
+	},
+	"plugins": ["import", "import-helpers", "prettier"],
+	"rules": {
+		"eslint-comments/no-unlimited-disable": "off",
+		"import/no-unresolved": ["error", { "ignore": ["@env"] }],
+		"import/prefer-default-export": "off",
+		"import-helpers/order-imports": [
+			"warn",
+			{
+				"newlinesBetween": "always",
+				"groups": [
+					"module",
+					["/^@components/", "/^@context/", "/^@theme/"],
+					"/^@api/",
+					"/^@styles/",
+					"/assets/",
+					["/^@config/", "/^@modules/", "/^@shared/"],
+					["parent", "sibling"]
+				],
+				"alphabetize": {
+					"order": "asc",
+					"ignoreCase": false
+				}
+			}
+		],
+		"no-continue": "off",
+		"no-param-reassign": "off",
+		"no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+		"no-unused-expressions": ["off", { "allowShortCircuit": true }],
+		"no-unused-vars": ["error", { "argsIgnorePattern": "^_|next" }],
+		"no-use-before-define": "off",
+		"one-var": ["error", { "uninitialized": "always" }],
+		"prefer-destructuring": "warn"
+	},
+	"overrides": [
+		{
+			"files": ["**/*.ts", "**/*.tsx"],
+			"env": {
+				"browser": true,
+				"jest": true,
+				"react-native/react-native": true
+			},
+			"extends": ["plugin:react/recommended", "plugin:react-native/all"],
+			"parser": "@typescript-eslint/parser",
+			"parserOptions": {
+				"ecmaVersion": "latest",
+				"ecmaFeatures": {
+					"jsx": true
+				}
+			},
+			"plugins": ["@typescript-eslint", "react", "react-hooks", "react-native"],
+			"rules": {
+				"@typescript-eslint/ban-ts-comment": "off",
+				"@typescript-eslint/no-empty-function": "off",
+				"@typescript-eslint/no-explicit-any": "off",
+				"@typescript-eslint/explicit-function-return-type": "off",
+				"@typescript-eslint/no-non-null-assertion": "off",
+				"@typescript-eslint/no-unused-vars": "off",
+				"@typescript-eslint/no-use-before-define": ["error"],
+				"@typescript-eslint/no-shadow": ["error"],
+				"import/extensions": [
+					"error",
+					"ignorePackages",
+					{
+						"ts": "never",
+						"tsx": "never"
+					}
+				],
+				"quotes": ["error", "double"],
+				"react/function-component-definition": ["error", { "namedComponents": "arrow-function" }],
+				"react/jsx-filename-extension": ["warn", { "extensions": [".tsx"] }],
+				"react/jsx-indent": "off",
+				"react/jsx-indent-props": "off",
+				"react/jsx-one-expression-per-line": "off",
+				"react/jsx-props-no-spreading": "off",
+				"react/no-array-index-key": "warn",
+				"react/prop-types": "off",
+				"react/react-in-jsx-scope": "off",
+				"react-hooks/exhaustive-deps": "error",
+				"react-hooks/rules-of-hooks": "error",
+				"react-native/no-color-literals": "off",
+				"react-native/no-inline-styles": "off",
+				"react-native/no-raw-text": "off"
+			},
+			"settings": {
+				"import/resolver": {
+					"typescript": {
+						"project": ["mobile/tsconfig.json"]
+					},
+					"node": {
+						"project": ["mobile/tsconfig.json"]
+					}
+				},
+				"node": {
+					"extensions": [".js", ".jsx", ".ts", ".tsx"]
+				}
+			}
+		}
+	]
+}
