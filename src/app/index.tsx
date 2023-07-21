@@ -1,6 +1,9 @@
 import { Feather } from "@expo/vector-icons";
-import { vh, vw } from "@units";
 import { Text, View } from "react-native";
+
+import { vh, vw } from "@units";
+
+const methodCategories = ["Autorais", "Integração", "Interpolação", "Matrizes", "Zeros de função"];
 
 const Home: React.FC = () => {
 	return (
@@ -9,81 +12,24 @@ const Home: React.FC = () => {
 				<Text style={{ color: "#FFFFFF", fontFamily: "Inter_500Medium", fontSize: 24 }}>Métodos</Text>
 			</View>
 
-			<View
-				style={{
-					borderRadius: 4,
-					borderWidth: 1,
-					flexDirection: "row",
-					justifyContent: "space-between",
-					margin: 2 * vh,
-					marginBottom: 0,
-					paddingHorizontal: 7 * vw,
-					paddingVertical: 2.5 * vh,
-				}}
-			>
-				<Text style={{ color: "#4E4E4E", fontSize: 20 }}>Autorais</Text>
-				<Feather name="chevron-down" size={26} color="black" />
-			</View>
-			<View
-				style={{
-					borderRadius: 4,
-					borderWidth: 1,
-					flexDirection: "row",
-					justifyContent: "space-between",
-					margin: 2 * vh,
-					marginBottom: 0,
-					paddingHorizontal: 7 * vw,
-					paddingVertical: 2.5 * vh,
-				}}
-			>
-				<Text style={{ color: "#4E4E4E", fontSize: 20 }}>Integração</Text>
-				<Feather name="chevron-down" size={26} color="black" />
-			</View>
-			<View
-				style={{
-					borderRadius: 4,
-					borderWidth: 1,
-					flexDirection: "row",
-					justifyContent: "space-between",
-					margin: 2 * vh,
-					marginBottom: 0,
-					paddingHorizontal: 7 * vw,
-					paddingVertical: 2.5 * vh,
-				}}
-			>
-				<Text style={{ color: "#4E4E4E", fontSize: 20 }}>Interpolação</Text>
-				<Feather name="chevron-down" size={26} color="black" />
-			</View>
-			<View
-				style={{
-					borderRadius: 4,
-					borderWidth: 1,
-					flexDirection: "row",
-					justifyContent: "space-between",
-					margin: 2 * vh,
-					marginBottom: 0,
-					paddingHorizontal: 7 * vw,
-					paddingVertical: 2.5 * vh,
-				}}
-			>
-				<Text style={{ color: "#4E4E4E", fontSize: 20 }}>Matrizes</Text>
-				<Feather name="chevron-down" size={26} color="black" />
-			</View>
-			<View
-				style={{
-					borderRadius: 4,
-					borderWidth: 1,
-					flexDirection: "row",
-					justifyContent: "space-between",
-					margin: 2 * vh,
-					marginBottom: 0,
-					paddingHorizontal: 7 * vw,
-					paddingVertical: 2.5 * vh,
-				}}
-			>
-				<Text style={{ color: "#4E4E4E", fontSize: 20 }}>Zeros de função</Text>
-				<Feather name="chevron-down" size={26} color="black" />
-			</View>
+			{methodCategories.map(category => (
+				<View
+					key={category}
+					style={{
+						borderRadius: 4,
+						borderWidth: 1,
+						flexDirection: "row",
+						justifyContent: "space-between",
+						margin: 2 * vh,
+						marginBottom: 0,
+						paddingHorizontal: 7 * vw,
+						paddingVertical: 2.35 * vh,
+					}}
+				>
+					<Text style={{ color: "#4E4E4E", fontFamily: "Inter_500Medium", fontSize: 19 }}>{category}</Text>
+					<Feather name="chevron-down" size={26} color="black" />
+				</View>
+			))}
 		</>
 	);
 };

@@ -21,7 +21,7 @@
 				"newlinesBetween": "always",
 				"groups": [
 					"module",
-					["/^@components/", "/^@context/", "/^@theme/"],
+					["/^@components/", "/^@context/", "/^@theme/", "/^@units/"],
 					"/^@api/",
 					"/^@styles/",
 					"/assets/",
