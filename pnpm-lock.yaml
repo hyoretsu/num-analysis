@@ -8,12 +8,18 @@ overrides:
   react-refresh: ~0.14.0
 
 dependencies:
+  '@expo-google-fonts/inter':
+    specifier: ^0.2.3
+    version: 0.2.3
   '@expo/vector-icons':
     specifier: ^13.0.0
     version: 13.0.0
   expo:
     specifier: ~49.0.3
     version: 49.0.3(@babel/core@7.20.2)
+  expo-font:
+    specifier: ~11.4.0
+    version: 11.4.0(expo@49.0.3)
   expo-linking:
     specifier: ~5.0.2
     version: 5.0.2(expo@49.0.3)
@@ -1618,6 +1624,10 @@ packages:
     resolution: {integrity: sha512-Ag+9YM4ocKQx9AarydN0KY2j0ErMHNIocPDrVo8zAE44xLTjEtz81OdR68/cydGtk6m6jDb5Za3r2useMzYmSw==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
+
+  /@expo-google-fonts/inter@0.2.3:
+    resolution: {integrity: sha512-iHK9FI+dnE45X5c2Z5hSFwNH4zUWethizpbv3XUn0FIGw5jwvzriENz0a6wCdkI4/d+1QkurnHo5XHti7TbNJA==}
+    dev: false
 
   /@expo/bunyan@4.0.0:
     resolution: {integrity: sha512-Ydf4LidRB/EBI+YrB+cVLqIseiRfjUI/AeHBgjGMtq3GroraDu81OV7zqophRgupngoL3iS3JUMDMnxO7g39qA==}
