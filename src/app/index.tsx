@@ -1,5 +1,6 @@
 import { Feather } from "@expo/vector-icons";
-import { Text, View } from "react-native";
+import { useState } from "react";
+import { Pressable, Text, View } from "react-native";
 
 import { vh, vw } from "@units";
 
@@ -9,12 +10,13 @@ const methodTitles: Record<string, string[]> = {
 };
 
 const Home: React.FC = () => {
+	const [selectedCategory, selectCategory] = useState("");
+
 	return (
 		<>
 			<View style={{ backgroundColor: "#3700B3", paddingLeft: 9 * vw, paddingVertical: 3 * vh }}>
 				<Text style={{ color: "#FFFFFF", fontFamily: "Inter_500Medium", fontSize: 24 }}>Métodos</Text>
 			</View>
-
 			{methodCategories.map(category => (
 				<View
 					key={category}
@@ -25,17 +27,31 @@ const Home: React.FC = () => {
 						marginBottom: 0,
 					}}
 				>
-					<View
-						style={{
-							flexDirection: "row",
-							justifyContent: "space-between",
-							paddingHorizontal: 7 * vw,
-							paddingVertical: 2.35 * vh,
-						}}
-					>
-						<Text style={{ color: "#4E4E4E", fontFamily: "Inter_500Medium", fontSize: 19 }}>{category}</Text>
-						<Feather name="chevron-down" size={26} color="black" />
-					</View>
+					<Pressable onPress={() => selectCategory(old => (old === category ? "" : category))}>
+						<View
+							style={{
+								flexDirection: "row",
+								justifyContent: "space-between",
+								paddingHorizontal: 7 * vw,
+								paddingVertical: 2.35 * vh,
+							}}
+						>
+							<Text
+								style={{
+									color: selectedCategory === category ? "#4B00D1" : "#4E4E4E",
+									fontFamily: "Inter_500Medium",
+									fontSize: 19,
+								}}
+							>
+								{category}
+							</Text>
+							<Feather
+								name={`chevron-${selectedCategory === category ? "up" : "down"}`}
+								size={26}
+								color={selectedCategory === category ? "#4B00D1" : "#4E4E4E"}
+							/>
+						</View>
+					</Pressable>
 
 					<View
 						style={{
@@ -43,22 +59,23 @@ const Home: React.FC = () => {
 							borderLeftWidth: 4,
 						}}
 					>
-						{methodTitles[category]?.map(title => (
-							<Text
-								key={title}
-								style={{
-									borderTopColor: "#D9D9D9",
-									borderTopWidth: 2,
-									color: "#4E4E4E",
-									fontFamily: "Inter_500Medium",
-									fontSize: 19,
-									paddingHorizontal: 7 * vw,
-									paddingVertical: 2.35 * vh,
-								}}
-							>
-								{title}
-							</Text>
-						))}
+						{selectedCategory === category &&
+							methodTitles[category]?.map(title => (
+								<Text
+									key={title}
+									style={{
+										borderTopColor: "#D9D9D9",
+										borderTopWidth: 2,
+										color: "#4E4E4E",
+										fontFamily: "Inter_500Medium",
+										fontSize: 19,
+										paddingHorizontal: 7 * vw,
+										paddingVertical: 2.35 * vh,
+									}}
+								>
+									{title}
+								</Text>
+							))}
 					</View>
 				</View>
 			))}
