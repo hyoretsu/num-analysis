@@ -1,8 +1,8 @@
 import { Inter_500Medium } from "@expo-google-fonts/inter";
+import { BetterStatusBar } from "@hyoretsu/rn-components";
 import { useFonts } from "expo-font";
 import { Slot } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -18,9 +18,10 @@ const Layout: React.FC = () => {
 	}
 
 	return (
-		<SafeAreaView>
+		<>
+			<BetterStatusBar backgroundColor="#3700B3" />
 			<Slot />
-		</SafeAreaView>
+		</>
 	);
 };
 
