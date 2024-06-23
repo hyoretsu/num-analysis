@@ -3,6 +3,12 @@ import { BetterStatusBar } from "@hyoretsu/rn-components";
 import { useFonts } from "expo-font";
 import { Slot } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
+import { I18nextProvider } from "react-i18next";
+import { GestureHandlerRootView, ScrollView } from "react-native-gesture-handler";
+import "intl-pluralrules";
+import "../i18n";
+
+import i18n from "../i18n";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -20,7 +26,13 @@ const Layout: React.FC = () => {
 	return (
 		<>
 			<BetterStatusBar backgroundColor="#3700B3" />
-			<Slot />
+			<I18nextProvider i18n={i18n}>
+				<GestureHandlerRootView>
+					<ScrollView>
+						<Slot />
+					</ScrollView>
+				</GestureHandlerRootView>
+			</I18nextProvider>
 		</>
 	);
 };

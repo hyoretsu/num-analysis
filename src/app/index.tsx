@@ -1,17 +1,21 @@
 import { Feather } from "@expo/vector-icons";
 import { categorizedMethods } from "numerical-methods";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Pressable, Text, View } from "react-native";
 
 import { vh, vw } from "@units";
 
 const Home: React.FC = () => {
 	const [selectedCategory, selectCategory] = useState("");
+	const { t } = useTranslation();
 
 	return (
 		<>
 			<View style={{ backgroundColor: "#3700B3", paddingLeft: 9 * vw, paddingVertical: 3 * vh }}>
-				<Text style={{ color: "#FFFFFF", fontFamily: "Inter_500Medium", fontSize: 24 }}>Métodos</Text>
+				<Text style={{ color: "#FFFFFF", fontFamily: "Inter_500Medium", fontSize: 24 }}>
+					{t("methods")}
+				</Text>
 			</View>
 			{Object.entries(categorizedMethods).map(([category, methods]) => {
 				return (
@@ -40,7 +44,7 @@ const Home: React.FC = () => {
 										fontSize: 19,
 									}}
 								>
-									{category}
+									{t(category)}
 								</Text>
 								<Feather
 									name={`chevron-${selectedCategory === category ? "up" : "down"}`}
@@ -70,7 +74,7 @@ const Home: React.FC = () => {
 											paddingVertical: 2.35 * vh,
 										}}
 									>
-										{method}
+										{t(method)}
 									</Text>
 								))}
 						</View>
