@@ -1,13 +1,9 @@
 import { Feather } from "@expo/vector-icons";
+import { categorizedMethods } from "numerical-methods";
 import { useState } from "react";
 import { Pressable, Text, View } from "react-native";
 
 import { vh, vw } from "@units";
-
-const methodCategories = ["Zeros de função", "Interpolação", "Integração", "Matrizes", "Autorais"];
-const methodTitles: Record<string, string[]> = {
-	"Zeros de função": ["Bisseção", "Falsa posição", "Newton-Raphson", "Secante"],
-};
 
 const Home: React.FC = () => {
 	const [selectedCategory, selectCategory] = useState("");
@@ -17,68 +13,70 @@ const Home: React.FC = () => {
 			<View style={{ backgroundColor: "#3700B3", paddingLeft: 9 * vw, paddingVertical: 3 * vh }}>
 				<Text style={{ color: "#FFFFFF", fontFamily: "Inter_500Medium", fontSize: 24 }}>Métodos</Text>
 			</View>
-			{methodCategories.map(category => (
-				<View
-					key={category}
-					style={{
-						borderRadius: 4,
-						borderWidth: 1,
-						margin: 2 * vh,
-						marginBottom: 0,
-					}}
-				>
-					<Pressable onPress={() => selectCategory(old => (old === category ? "" : category))}>
-						<View
-							style={{
-								flexDirection: "row",
-								justifyContent: "space-between",
-								paddingHorizontal: 7 * vw,
-								paddingVertical: 2.35 * vh,
-							}}
-						>
-							<Text
-								style={{
-									color: selectedCategory === category ? "#4B00D1" : "#4E4E4E",
-									fontFamily: "Inter_500Medium",
-									fontSize: 19,
-								}}
-							>
-								{category}
-							</Text>
-							<Feather
-								name={`chevron-${selectedCategory === category ? "up" : "down"}`}
-								size={26}
-								color={selectedCategory === category ? "#4B00D1" : "#4E4E4E"}
-							/>
-						</View>
-					</Pressable>
-
+			{Object.entries(categorizedMethods).map(([category, methods]) => {
+				return (
 					<View
+						key={category}
 						style={{
-							borderLeftColor: "#4B00D1",
-							borderLeftWidth: 4,
+							borderRadius: 4,
+							borderWidth: 1,
+							margin: 2 * vh,
+							marginBottom: 0,
 						}}
 					>
-						{selectedCategory === category &&
-							methodTitles[category]?.map(title => (
+						<Pressable onPress={() => selectCategory(old => (old === category ? "" : category))}>
+							<View
+								style={{
+									flexDirection: "row",
+									justifyContent: "space-between",
+									paddingHorizontal: 7 * vw,
+									paddingVertical: 2.35 * vh,
+								}}
+							>
 								<Text
-									key={title}
 									style={{
-										borderTopColor: "#D9D9D9",
-										borderTopWidth: 2,
-										color: "#4E4E4E",
+										color: selectedCategory === category ? "#4B00D1" : "#4E4E4E",
 										fontFamily: "Inter_500Medium",
 										fontSize: 19,
-										paddingHorizontal: 7 * vw,
-										paddingVertical: 2.35 * vh,
 									}}
 								>
-									{title}
+									{category}
 								</Text>
-							))}
+								<Feather
+									name={`chevron-${selectedCategory === category ? "up" : "down"}`}
+									size={26}
+									color={selectedCategory === category ? "#4B00D1" : "#4E4E4E"}
+								/>
+							</View>
+						</Pressable>
+
+						<View
+							style={{
+								borderLeftColor: "#4B00D1",
+								borderLeftWidth: 4,
+							}}
+						>
+							{selectedCategory === category &&
+								Object.keys(methods)?.map(method => (
+									<Text
+										key={method}
+										style={{
+											borderTopColor: "#D9D9D9",
+											borderTopWidth: 2,
+											color: "#4E4E4E",
+											fontFamily: "Inter_500Medium",
+											fontSize: 19,
+											paddingHorizontal: 7 * vw,
+											paddingVertical: 2.35 * vh,
+										}}
+									>
+										{method}
+									</Text>
+								))}
+						</View>
 					</View>
-				</View>
-			))}
+				);
+			})}
 		</>
 	);
 };

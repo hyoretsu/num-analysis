@@ -9,7 +9,6 @@
 		},
 		"assetBundlePatterns": ["**/*"],
 		"experiments": {
-			"tsconfigPaths": true,
 			"typedRoutes": true
 		},
 		"icon": "./src/assets/icon.png",
