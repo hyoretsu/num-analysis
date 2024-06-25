@@ -1,12 +1,14 @@
 import { Feather } from "@expo/vector-icons";
+import { router } from "expo-router";
 import { categorizedMethods } from "numerical-methods";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Pressable, Text, View } from "react-native";
+import { RectButton } from "react-native-gesture-handler";
 
 import { vh, vw } from "@units";
 
-const Home: React.FC = () => {
+export default function Home() {
 	const [selectedCategory, selectCategory] = useState("");
 	const { t } = useTranslation();
 
@@ -17,72 +19,88 @@ const Home: React.FC = () => {
 					{t("methods")}
 				</Text>
 			</View>
-			{Object.entries(categorizedMethods).map(([category, methods]) => {
-				return (
-					<View
-						key={category}
-						style={{
-							borderRadius: 4,
-							borderWidth: 1,
-							margin: 2 * vh,
-							marginBottom: 0,
-						}}
-					>
-						<Pressable onPress={() => selectCategory(old => (old === category ? "" : category))}>
-							<View
-								style={{
-									flexDirection: "row",
-									justifyContent: "space-between",
-									paddingHorizontal: 7 * vw,
-									paddingVertical: 2.35 * vh,
-								}}
-							>
-								<Text
-									style={{
-										color: selectedCategory === category ? "#4B00D1" : "#4E4E4E",
-										fontFamily: "Inter_500Medium",
-										fontSize: 19,
-									}}
-								>
-									{t(category)}
-								</Text>
-								<Feather
-									name={`chevron-${selectedCategory === category ? "up" : "down"}`}
-									size={26}
-									color={selectedCategory === category ? "#4B00D1" : "#4E4E4E"}
-								/>
-							</View>
-						</Pressable>
 
+			<View
+				style={{
+					paddingHorizontal: 2 * vh,
+					paddingBottom: 2 * vh,
+				}}
+			>
+				{Object.entries(categorizedMethods).map(([category, methods]) => {
+					return (
 						<View
+							key={category}
 							style={{
-								borderLeftColor: "#4B00D1",
-								borderLeftWidth: 4,
+								borderRadius: 4,
+								borderWidth: 1,
+								marginTop: 2 * vh,
 							}}
 						>
-							{selectedCategory === category &&
-								Object.keys(methods)?.map(method => (
+							<Pressable
+								onPress={() => selectCategory(old => (old === category ? "" : category))}
+							>
+								<View
+									style={{
+										flexDirection: "row",
+										justifyContent: "space-between",
+										paddingHorizontal: 7 * vw,
+										paddingVertical: 2.35 * vh,
+									}}
+								>
 									<Text
-										key={method}
 										style={{
-											borderTopColor: "#D9D9D9",
-											borderTopWidth: 2,
-											color: "#4E4E4E",
+											color: selectedCategory === category ? "#4B00D1" : "#4E4E4E",
 											fontFamily: "Inter_500Medium",
 											fontSize: 19,
-											paddingHorizontal: 7 * vw,
-											paddingVertical: 2.35 * vh,
 										}}
 									>
-										{t(method)}
+										{t(category)}
 									</Text>
-								))}
+									<Feather
+										name={`chevron-${selectedCategory === category ? "up" : "down"}`}
+										size={26}
+										color={selectedCategory === category ? "#4B00D1" : "#4E4E4E"}
+									/>
+								</View>
+							</Pressable>
+
+							<View
+								style={{
+									borderLeftColor: "#4B00D1",
+									borderLeftWidth: 4,
+								}}
+							>
+								{selectedCategory === category &&
+									Object.keys(methods)?.map(method => (
+										<RectButton
+											key={method}
+											onPress={() =>
+												router.push({
+													pathname: "/[method]/params",
+													params: { method },
+												})
+											}
+										>
+											<Text
+												style={{
+													borderTopColor: "#D9D9D9",
+													borderTopWidth: 2,
+													color: "#4E4E4E",
+													fontFamily: "Inter_500Medium",
+													fontSize: 19,
+													paddingHorizontal: 7 * vw,
+													paddingVertical: 2.35 * vh,
+												}}
+											>
+												{t(method)}
+											</Text>
+										</RectButton>
+									))}
+							</View>
 						</View>
-					</View>
-				);
-			})}
+					);
+				})}
+			</View>
 		</>
 	);
-};
-
-export default Home;
+}

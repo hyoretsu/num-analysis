@@ -1,4 +1,5 @@
 import { Inter_500Medium } from "@expo-google-fonts/inter";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { BetterStatusBar } from "@hyoretsu/rn-components";
 import { useFonts } from "expo-font";
 import { Slot } from "expo-router";
@@ -14,6 +15,7 @@ SplashScreen.preventAutoHideAsync();
 
 const Layout: React.FC = () => {
 	const [fontsLoaded] = useFonts({
+		MaterialCommunityIcons: Object.values(MaterialCommunityIcons.font)[0],
 		Inter_500Medium,
 	});
 

@@ -16,6 +16,47 @@
 	"minMaxBisection": "Bissecção máximo-mínimo",
 	"newtonInterpolation": "Newton",
 	"newtonRaphson": "Newton-Raphson",
+	"params": {
+		"bail": {
+			"description": "Se o algoritmo deve parar assim que uma das condições for atendida.",
+			"title": "Parada rápida"
+		},
+		"condition1": "Erro absoluto",
+		"condition2": "Valor absoluto",
+		"conditionsWhitelist": {
+			"description": "Quais condições de parada o algoritmo deve considerar.",
+			"title": "Condições de parada"
+		},
+		"from": "De: 3",
+		"func": {
+			"description": "Função sob a qual iterar.",
+			"title": "Função"
+		},
+		"interval": {
+			"description": "Intervalo sob o qual iterar.",
+			"title": "Intervalo"
+		},
+		"maxIterations": {
+			"description": "Número máximo de iterações. Caso o algoritmo ultrapasse ele, independente se cumpriu as condições de parada, ele irá parar. Útil para evitar loops infinitos.",
+			"title": "Nº de iterações"
+		},
+		"origFunc": {
+			"description": "Retorna o resultado também em uma outra função. Útil para problemas de derivada por exemplo.",
+			"title": "Função original"
+		},
+		"precision": {
+			"description": "Precisão desejada. Quanto menor, mais preciso será o resultado.",
+			"placeholder": "0,000001",
+			"title": "Precisão"
+		},
+		"options": {
+			"title": "Opções"
+		},
+		"relativeError": {
+			"title": "Erro relativo"
+		},
+		"to": "Até: 5"
+	},
 	"secant": "Secante",
 	"simpsonRule13": "Regra 1/3 de Simpson",
 	"spectralRadius": "Raio espectral",
