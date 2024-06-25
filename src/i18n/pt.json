@@ -21,6 +21,7 @@
 					"description": "Se o algoritmo deve parar assim que uma das condições for atendida.",
 					"title": "Parada rápida"
 				},
+				"clear": "Limpar tudo",
 				"condition1": "Erro absoluto",
 				"condition2": "Valor absoluto",
 				"conditionsWhitelist": {
@@ -55,6 +56,7 @@
 				"relativeError": {
 					"title": "Erro relativo"
 				},
+				"run": "Calcular",
 				"to": "Até: 5"
 			},
 			"title": "Calculadora"

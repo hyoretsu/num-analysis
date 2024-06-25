@@ -1,4 +1,3 @@
-import { t } from "i18next";
 import { Text } from "react-native";
 
 export interface ParamTitleProps {
@@ -14,7 +13,7 @@ export default function ParamTitle({ children }: ParamTitleProps) {
 				fontSize: 18,
 			}}
 		>
-			{t(children)}
+			{children}
 		</Text>
 	);
 }

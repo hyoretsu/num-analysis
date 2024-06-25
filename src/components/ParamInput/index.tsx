@@ -1,4 +1,4 @@
-import type { Dispatch, SetStateAction } from "react";
+import { type Dispatch, type SetStateAction } from "react";
 import { useTranslation } from "react-i18next";
 import { View } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
