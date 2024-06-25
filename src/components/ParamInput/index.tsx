@@ -62,7 +62,7 @@ export default function ParamInput({ option, param, state: stateArr, type }: Par
 			placeholder = "100";
 		}
 		if (param === "precision") {
-			placeholder = t("params.precision.placeholder");
+			placeholder = t("method.calculator.params.precision.placeholder");
 		}
 	} else if (type.at(0) === "[" && type.at(-1) === "]") {
 		// const types = type.slice(1, -1).split(",");
@@ -87,7 +87,7 @@ export default function ParamInput({ option, param, state: stateArr, type }: Par
 					<TextInput
 						value={state[0]}
 						keyboardType={"number-pad"}
-						placeholder={t("params.from")}
+						placeholder={t("method.calculator.params.from")}
 						placeholderTextColor="#CACACA"
 						onChangeText={value => setState(Number(value.replace(",", ".")), 0)}
 						style={{
@@ -109,7 +109,7 @@ export default function ParamInput({ option, param, state: stateArr, type }: Par
 					<TextInput
 						value={state[1]}
 						keyboardType={"number-pad"}
-						placeholder={t("params.to")}
+						placeholder={t("method.calculator.params.to")}
 						placeholderTextColor="#CACACA"
 						onChangeText={value => setState(Number(value.replace(",", ".")), 1)}
 						style={{
@@ -131,13 +131,13 @@ export default function ParamInput({ option, param, state: stateArr, type }: Par
 				<Checkbox
 					checked={state[0]}
 					onPress={() => setState(!state[0], 0)}
-					title={t("params.condition1")}
+					title={t("method.calculator.params.condition1")}
 				/>
 
 				<Checkbox
 					checked={state[1]}
 					onPress={() => setState(!state[1], 1)}
-					title={t("params.condition2")}
+					title={t("method.calculator.params.condition2")}
 				/>
 			</View>
 		);
@@ -156,7 +156,7 @@ export default function ParamInput({ option, param, state: stateArr, type }: Par
 		>
 			{type === "boolean" ? (
 				<View>
-					<ParamTitle>{t(`params.${option || param}.title`)}</ParamTitle>
+					<ParamTitle>{t(`method.calculator.params.${option || param}.title`)}</ParamTitle>
 
 					<Checkbox checked={state} onPress={() => setState(!state)} />
 				</View>

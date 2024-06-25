@@ -5,7 +5,7 @@ import { useFonts } from "expo-font";
 import { Slot } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { I18nextProvider } from "react-i18next";
-import { GestureHandlerRootView, ScrollView } from "react-native-gesture-handler";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import "intl-pluralrules";
 import "../i18n";
 
@@ -30,9 +30,7 @@ const Layout: React.FC = () => {
 			<BetterStatusBar backgroundColor="#3700B3" />
 			<I18nextProvider i18n={i18n}>
 				<GestureHandlerRootView>
-					<ScrollView>
-						<Slot />
-					</ScrollView>
+					<Slot />
 				</GestureHandlerRootView>
 			</I18nextProvider>
 		</>

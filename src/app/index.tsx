@@ -4,8 +4,9 @@ import { categorizedMethods } from "numerical-methods";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Pressable, Text, View } from "react-native";
-import { RectButton } from "react-native-gesture-handler";
+import { RectButton, ScrollView } from "react-native-gesture-handler";
 
+import Header from "@components/Header";
 import { vh, vw } from "@units";
 
 export default function Home() {
@@ -13,12 +14,8 @@ export default function Home() {
 	const { t } = useTranslation();
 
 	return (
-		<>
-			<View style={{ backgroundColor: "#3700B3", paddingLeft: 9 * vw, paddingVertical: 3 * vh }}>
-				<Text style={{ color: "#FFFFFF", fontFamily: "Inter_500Medium", fontSize: 24 }}>
-					{t("methods")}
-				</Text>
-			</View>
+		<ScrollView>
+			<Header title={t("methods")} />
 
 			<View
 				style={{
@@ -76,7 +73,7 @@ export default function Home() {
 											key={method}
 											onPress={() =>
 												router.push({
-													pathname: "/[method]/params",
+													pathname: "/[method]/calculator/params",
 													params: { method },
 												})
 											}
@@ -101,6 +98,6 @@ export default function Home() {
 					);
 				})}
 			</View>
-		</>
+		</ScrollView>
 	);
 }

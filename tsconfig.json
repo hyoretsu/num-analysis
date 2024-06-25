@@ -17,7 +17,7 @@
 		"noFallthroughCasesInSwitch": true,
 		"noImplicitAny": true,
 		"paths": {
-			"@api": ["services/api"],
+			"@assets/*": ["assets/*"],
 			"@components/*": ["components/*"],
 			"@context/*": ["context/*"],
 			"@i18n": ["i18n"],
