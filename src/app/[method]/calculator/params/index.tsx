@@ -1,5 +1,5 @@
 import { FontAwesome6 } from "@expo/vector-icons";
-import { useLocalSearchParams } from "expo-router";
+import { router, useLocalSearchParams, usePathname } from "expo-router";
 import { paramsList, type AllMethods } from "numerical-methods";
 import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -14,6 +14,7 @@ export type InputParams = Record<string, any>;
 
 export default function MethodArgs() {
 	const { method } = useLocalSearchParams<{ method: AllMethods }>();
+	const pathname = usePathname();
 	const [optionsOpen, openOptions] = useState(false);
 	const { t } = useTranslation();
 
@@ -127,7 +128,7 @@ export default function MethodArgs() {
 				}}
 			>
 				<ParamButton
-					onPress={() => setInputParams(defaultParams)}
+					onPress={() => router.replace(pathname)}
 					backgroundColor="#FFFFFF"
 					textColor="#3700B3"
 				>
