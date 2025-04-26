@@ -1,5 +1,5 @@
 import { FontAwesome6 } from "@expo/vector-icons";
-import { router, useLocalSearchParams, usePathname } from "expo-router";
+import { router, useLocalSearchParams, usePathname, useRouter } from "expo-router";
 import { paramsList, type AllMethods } from "numerical-methods";
 import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -15,6 +15,7 @@ export type InputParams = Record<string, any>;
 export default function MethodArgs() {
 	const { method } = useLocalSearchParams<{ method: AllMethods }>();
 	const pathname = usePathname();
+	const { navigate } = useRouter();
 	const [optionsOpen, openOptions] = useState(false);
 	const { t } = useTranslation();
 
@@ -135,7 +136,13 @@ export default function MethodArgs() {
 					{t("method.calculator.params.clear")}
 				</ParamButton>
 
-				<ParamButton onPress={() => {}} backgroundColor="#3700B3" textColor="#FFFFFF">
+				<ParamButton
+					onPress={() => {
+						navigate(`/${method}/calculator/results?params=${JSON.stringify(inputParams)}`);
+					}}
+					backgroundColor="#3700B3"
+					textColor="#FFFFFF"
+				>
 					{t("method.calculator.params.run")}
 				</ParamButton>
 			</View>

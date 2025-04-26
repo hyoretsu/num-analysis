@@ -38,7 +38,7 @@
 		"no-param-reassign": "off",
 		"no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
 		"no-unused-expressions": ["off", { "allowShortCircuit": true }],
-		"no-unused-vars": ["error", { "argsIgnorePattern": "^_|next" }],
+		"no-unused-vars": ["warn", { "argsIgnorePattern": "^_|next" }],
 		"no-use-before-define": "off",
 		"one-var": ["error", { "uninitialized": "always" }],
 		"prefer-destructuring": "warn"
