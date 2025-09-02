@@ -1,0 +1,40 @@
+{
+	"name": "frontend",
+	"private": true,
+	"version": "1.0.0",
+	"type": "module",
+	"scripts": {
+		"build": "next build --turbo",
+		"dev": "next dev --turbo",
+		"start": "next start",
+		"tad": "tauri android dev",
+		"tb": "tauri build",
+		"td": "tauri dev",
+		"tid": "tauri ios dev"
+	},
+	"dependencies": {
+		"@hyoretsu/utils": "^1.16.0",
+		"@mantine/core": "^8.2.5",
+		"@mantine/hooks": "^8.2.5",
+		"@tauri-apps/api": "^2.8.0",
+		"@tauri-apps/plugin-opener": "^2.4.0",
+		"mathjs": "^14.6.0",
+		"next": "^15.4.7",
+		"numerical-methods": "workspace:*",
+		"react": "^19.1.0",
+		"react-dom": "^19.1.0",
+		"zustand": "^5.0.7"
+	},
+	"devDependencies": {
+		"@hyoretsu/tsconfig": "^2.1.1",
+		"@next/env": "^15.4.7",
+		"@tailwindcss/postcss": "^4.1.12",
+		"@tauri-apps/cli": "^2",
+		"@types/react": "^19.1.8",
+		"@types/react-dom": "^19.1.6",
+		"postcss": "^8.5.6",
+		"postcss-preset-mantine": "^1.18.0",
+		"postcss-simple-vars": "^7.0.1",
+		"tailwindcss": "^4.1.12"
+	}
+}

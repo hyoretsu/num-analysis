@@ -1,0 +1,43 @@
+{
+	"name": "numerical-methods",
+	"description": "A library that I made while studying Computer Science at UFPB. Documentation's available through TypeScript.",
+	"version": "0.13.7",
+	"keywords": [
+		"academic",
+		"calculus",
+		"numerical analysis",
+		"numerical methods"
+	],
+	"main": "dist/index.cjs",
+	"module": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"type": "module",
+	"homepage": "https://github.com/hyoretsu/npm-packages/tree/main/packages/numerical-methods",
+	"bugs": {
+		"url": "https://github.com/hyoretsu/npm-packages/issues",
+		"email": "hyoretsu@gmail.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/hyoretsu/npm-packages.git"
+	},
+	"license": "MIT",
+	"author": {
+		"name": "Aran Leite",
+		"email": "hyoretsu@gmail.com",
+		"url": "https://www.linkedin.com/in/aranleite"
+	},
+	"scripts": {
+		"prepublishOnly": "bun tsup",
+		"prepare": "bun tsup"
+	},
+	"dependencies": {
+		"@hyoretsu/utils": "^1.5.0",
+		"mathjs": "^11.2.1"
+	},
+	"devDependencies": {
+		"@types/node": "^24.3.0",
+		"tsup": "^8.4.0",
+		"typescript": "latest"
+	}
+}

@@ -8,7 +8,7 @@
 				"useSortedProperties": "on"
 			}
 		},
-		"includes": ["**", "!package.json"]
+		"includes": ["**", "!**/package.json"]
 	},
 	"files": {
 		"ignoreUnknown": true,

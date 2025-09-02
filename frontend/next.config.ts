@@ -43,7 +43,7 @@ const configFn: NextConfigFunction = async (phase, { defaultConfig }) => {
   if (phase === PHASE_DEVELOPMENT_SERVER) {
     // Dev-specific settings
     baseConf.allowedDevOrigins = [internalHost];
-    // baseConf.assetPrefix = `http://${internalHost}:3000`;
+    baseConf.assetPrefix = `http://${internalHost}:3000`;
   }
 
   return baseConf;

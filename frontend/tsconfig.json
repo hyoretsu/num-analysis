@@ -32,11 +32,6 @@
 		"typeRoots": ["./node_modules/@types", "src/@types"]
 	},
 	"exclude": ["node_modules"],
-	"extends": "@hyoretsu/tsconfig/frontend",
-	"include": [
-		".next/types/**/*.ts",
-		"next-env.d.ts",
-		"src/**/*.ts",
-		"src/**/*.tsx"
-	]
+	"extends": "@hyoretsu/tsconfig/frontend/tsconfig.json",
+	"include": [".next/types/**/*.ts", "next-env.d.ts", "src/**/*.ts", "src/**/*.tsx"]
 }

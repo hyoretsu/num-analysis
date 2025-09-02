@@ -1,4 +1,5 @@
 import eslint from "@eslint/js";
+// @ts-expect-error
 import biome from "eslint-config-biome";
 import pluginJest from "eslint-plugin-jest";
 import tseslint, { type ConfigArray } from "typescript-eslint";
@@ -22,6 +23,7 @@ export default tseslint.config([
       "@typescript-eslint/no-duplicate-enum-values": "off",
       "@typescript-eslint/no-dynamic-delete": "warn",
       "@typescript-eslint/no-empty-function": "warn",
+      "@typescript-eslint/no-namespace": "off",
     },
   },
   // JS files
@@ -58,9 +60,9 @@ export default tseslint.config([
     },
   },
   {
-    // @ts-ignore
     extends: [biome],
     rules: {
+      "@typescript-eslint/array-type": "off",
       "@typescript-eslint/no-unused-vars": "off",
       "@typescript-eslint/require-await": "off",
       "jest/max-nested-describe": "off",

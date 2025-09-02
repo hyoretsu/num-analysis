@@ -1,15 +1,14 @@
+import { Providers } from "@lib/providers";
 import { ColorSchemeScript, mantineHtmlProps } from "@mantine/core";
 import "@mantine/core/styles.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Roboto } from "next/font/google";
 import type { PropsWithChildren } from "react";
 import WebVitals from "./components/WebVitals";
 import "./globals.css";
-import { Providers } from "./lib/providers";
 
 // Fonts
-
-const inter = Inter({ subsets: ["latin"] });
+const roboto = Roboto({ subsets: ["latin"] });
 
 // Next.js
 const siteName = "UniDB";
@@ -47,17 +46,19 @@ export const viewport = {
 
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
-    <html className={inter.className} lang="en" {...mantineHtmlProps}>
+    <html className={roboto.className} lang="en" {...mantineHtmlProps}>
       <head>
         <link href="/site.webmanifest" rel="manifest" />
         <meta content={viewport.themeColor} name="theme-color" />
 
-        <meta content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no viewport-fit=cover" name="viewport" />
+        <meta content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
 
         <ColorSchemeScript />
       </head>
-      <body className="pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]">
-        <Providers>{children}</Providers>
+      <body className="!pt-[calc(env(safe-area-inset-top)_+_1rem)] !pb-[calc(env(safe-area-inset-bottom)_+_1rem)]">
+        <Providers>
+          <main className="mx-auto flex max-w-full flex-col items-center px-4">{children}</main>
+        </Providers>
 
         {process.env.NODE_ENV === "production" && <WebVitals />}
       </body>

@@ -1,5 +1,6 @@
 "use client";
 import { MantineProvider } from "@mantine/core";
+import { theme } from "@styles/theme";
 import type { ReactNode } from "react";
 
 export interface ProvidersProps {
@@ -7,5 +8,5 @@ export interface ProvidersProps {
 }
 
 export function Providers({ children }: ProvidersProps) {
-  return <MantineProvider>{children}</MantineProvider>;
+  return <MantineProvider theme={theme}>{children}</MantineProvider>;
 }
