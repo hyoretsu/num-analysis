@@ -1,8 +1,8 @@
 .container {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	align-items: center;
+	justify-content: center;
 }
 
 .notFound {
@@ -13,9 +13,9 @@
 	height: 100vh;
 
 	svg {
-		color: #f00;
 		width: auto;
 		height: 20%;
+		color: #f00;
 	}
 
 	span {

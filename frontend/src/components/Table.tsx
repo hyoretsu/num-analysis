@@ -1,5 +1,5 @@
 import { useMemo, useRef } from "react";
-import { Animated, StyleSheet, Text, View, type DimensionValue } from "react-native";
+import { Animated, type DimensionValue, StyleSheet, Text, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 
 const styles = StyleSheet.create({
@@ -66,11 +66,11 @@ export default function Table({ data, header, height, width }: TableProps) {
 			}}
 		>
 			<ScrollView
+				horizontal
 				ref={horizontalRef}
 				scrollEventThrottle={16}
-				simultaneousHandlers={verticalRef}
-				horizontal
 				showsHorizontalScrollIndicator
+				simultaneousHandlers={verticalRef}
 			>
 				<View style={styles.container}>
 					{header && (
@@ -78,11 +78,7 @@ export default function Table({ data, header, height, width }: TableProps) {
 							{header.map((cell, j) => (
 								<View
 									key={j}
-									style={[
-										styles.cell,
-										{ borderTopWidth: 0, width: colWidths[j] },
-										j === 0 && { borderLeftWidth: 0 },
-									]}
+									style={[styles.cell, { borderTopWidth: 0, width: colWidths[j] }, j === 0 && { borderLeftWidth: 0 }]}
 								>
 									<Text style={styles.headText}>{cell}</Text>
 								</View>

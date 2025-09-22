@@ -1,4 +1,5 @@
-import React, { useRef } from "react";
+import type React from "react";
+import { useRef } from "react";
 import { Animated, ScrollView } from "react-native";
 import { PanGestureHandler } from "react-native-gesture-handler";
 
@@ -20,16 +21,16 @@ export default function TablePan({ table }: TablePanProps) {
 			<Animated.View style={{ flex: 1 }}>
 				<ScrollView
 					horizontal
-					scrollEventThrottle={16}
 					onScroll={Animated.event([{ nativeEvent: { contentOffset: { x: scrollX } } }], {
 						useNativeDriver: false,
 					})}
+					scrollEventThrottle={16}
 				>
 					<ScrollView
-						scrollEventThrottle={16}
 						onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: scrollY } } }], {
 							useNativeDriver: false,
 						})}
+						scrollEventThrottle={16}
 					>
 						{table}
 					</ScrollView>

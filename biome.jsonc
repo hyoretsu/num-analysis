@@ -51,9 +51,14 @@
 				"noForEach": "off"
 			},
 			"correctness": {
+				"noUnusedFunctionParameters": {
+					"fix": "none",
+					"level": "warn"
+				},
 				"noUnusedImports": "error",
 				"noUnusedPrivateClassMembers": "warn",
 				"noUnusedVariables": {
+					"fix": "none",
 					"level": "warn",
 					"options": {
 						"ignoreRestSiblings": true

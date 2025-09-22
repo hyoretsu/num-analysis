@@ -4,9 +4,9 @@ import { theme } from "@styles/theme";
 import type { ReactNode } from "react";
 
 export interface ProvidersProps {
-  children: ReactNode;
+	children: ReactNode;
 }
 
 export function Providers({ children }: ProvidersProps) {
-  return <MantineProvider theme={theme}>{children}</MantineProvider>;
+	return <MantineProvider theme={theme}>{children}</MantineProvider>;
 }
