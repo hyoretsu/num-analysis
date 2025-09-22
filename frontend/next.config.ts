@@ -21,7 +21,8 @@ type NextConfigFunction = (
   },
 ) => Promise<NextConfig> | NextConfig;
 
-const internalHost = process.env.TAURI_DEV_HOST || process.env.NEXT_PUBLIC_APP_URL || "localhost";
+const internalHost =
+  process.env.TAURI_DEV_HOST || process.env.NEXT_PUBLIC_APP_URL?.match(/https?:\/\/(.*?)(:\d{0,5})?(\/|$)/)?.[1] || "localhost";
 
 const configFn: NextConfigFunction = async (phase, { defaultConfig }) => {
   const baseConf: NextConfig = {

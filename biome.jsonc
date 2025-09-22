@@ -14,11 +14,11 @@
 		"ignoreUnknown": true,
 		"includes": [
 			"**",
-			"!**/.next/**",
-			"!**/build/**",
-			"!**/client/**",
-			"!**/dist/**",
-			"!**/node_modules/**",
+			"!**/.next",
+			"!**/build",
+			"!**/client",
+			"!**/dist",
+			"!**/node_modules",
 			"!bun.lock"
 		]
 	},
@@ -59,7 +59,8 @@
 						"ignoreRestSiblings": true
 					}
 				},
-				"useHookAtTopLevel": "on" // Enable in React
+				"useHookAtTopLevel": "on", // Enable in React
+				"useUniqueElementIds": "warn"
 			},
 			"nursery": {
 				"useSortedClasses": {
