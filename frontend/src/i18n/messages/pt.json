@@ -1,0 +1,12 @@
+{
+	"func": "Função",
+	"initialX": "X inicial",
+	"options": {
+		"bail": "Interromper",
+		"conditionsWhitelist": "Condições de parada",
+		"maxIterations": "Máximo de iterações",
+		"origFunc": "Função original",
+		"relativeError": "Erro relativo"
+	},
+	"precision": "Precisão"
+}

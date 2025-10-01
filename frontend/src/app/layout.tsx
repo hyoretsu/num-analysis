@@ -2,6 +2,7 @@ import { Providers } from "@lib/providers";
 import { ColorSchemeScript, mantineHtmlProps } from "@mantine/core";
 import "@mantine/core/styles.css";
 import type { Metadata } from "next";
+import { getMessages } from "next-intl/server";
 import { Roboto } from "next/font/google";
 import type { PropsWithChildren } from "react";
 import WebVitals from "./components/WebVitals";
@@ -44,9 +45,12 @@ export const viewport = {
 	themeColor: "#4F53B7",
 };
 
-export default function RootLayout({ children }: PropsWithChildren) {
+export default async function RootLayout({ children }: PropsWithChildren) {
+	const locale = "pt";
+	const messages = await getMessages();
+
 	return (
-		<html className={roboto.className} lang="en" {...mantineHtmlProps}>
+		<html className={roboto.className} lang={locale} {...mantineHtmlProps}>
 			<head>
 				<link href="/site.webmanifest" rel="manifest" />
 				<meta content={viewport.themeColor} name="theme-color" />
@@ -59,8 +63,8 @@ export default function RootLayout({ children }: PropsWithChildren) {
 				<ColorSchemeScript />
 			</head>
 			<body className="!pt-[calc(env(safe-area-inset-top)_+_1rem)] !pb-[calc(env(safe-area-inset-bottom)_+_1rem)]">
-				<Providers>
-					<main className="mx-auto flex max-w-full flex-col items-center px-4">{children}</main>
+				<Providers locale={locale} messages={messages}>
+					<main className="flex w-full flex-col items-center px-4">{children}</main>
 				</Providers>
 
 				{process.env.NODE_ENV === "production" && <WebVitals />}
