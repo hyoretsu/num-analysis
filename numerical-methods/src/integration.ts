@@ -27,11 +27,11 @@ export const integrationParams = {
 	x: "[number,number]",
 };
 
-export const trapezoidalRule: Integration = ({ func, pointN, x }) => {
+export const trapezoidalRule: Integration = ({ func, pointN, x: interval }) => {
 	const intervals = pointN - 1;
 
-	const amplitude = (x[1] - x[0]) / intervals;
-	const points = [...range(x[0], x[1], amplitude), x[1]];
+	const amplitude = (interval[1] - interval[0]) / intervals;
+	const points = [...range(interval[0], interval[1], amplitude), interval[1]];
 	const y = points.map(number => evaluate(func, { x: number }));
 
 	let result = y.reduce((sum, value, i) => {
@@ -51,25 +51,24 @@ export const trapezoidalRule: Integration = ({ func, pointN, x }) => {
 		},
 	} = minMaxBisection({
 		func: secondDerivative,
-		interval: [x[0], x[1]],
-		target: "max",
-		precision: 1e-12,
+		interval,
 		options: {
 			maxIterations: 1000,
 		},
+		precision: 1e-12,
+		target: "max",
 	});
 
-	const error =
-		(amplitude ** 3 / (12 * intervals ** 2)) * Math.abs(evaluate(secondDerivative, { x: maxPoint }));
+	const error = (amplitude ** 3 / (12 * intervals ** 2)) * Math.abs(evaluate(secondDerivative, { x: maxPoint }));
 
-	return { result, details: { error } };
+	return { details: { error }, result };
 };
 
-export const simpsonRule13: Integration = ({ func, pointN, x }) => {
+export const simpsonRule13: Integration = ({ func, pointN, x: interval }) => {
 	const intervals = pointN - 1;
 
-	const amplitude = (x[1] - x[0]) / intervals;
-	const points = [...range(x[0], x[1], amplitude), x[1]];
+	const amplitude = (interval[1] - interval[0]) / intervals;
+	const points = [...range(interval[0], interval[1], amplitude), interval[1]];
 	const y = points.map(number => evaluate(func, { x: number }));
 
 	let result = y.reduce((sum, value, i) => {
@@ -81,10 +80,7 @@ export const simpsonRule13: Integration = ({ func, pointN, x }) => {
 	}, 0);
 	result *= amplitude / 3;
 
-	const fourthDerivative = derivative(
-		derivative(derivative(derivative(func, "x"), "x"), "x"),
-		"x",
-	).toString();
+	const fourthDerivative = derivative(derivative(derivative(derivative(func, "x"), "x"), "x"), "x").toString();
 
 	const {
 		result: {
@@ -92,16 +88,15 @@ export const simpsonRule13: Integration = ({ func, pointN, x }) => {
 		},
 	} = minMaxBisection({
 		func: fourthDerivative,
-		interval: x,
-		target: "max",
-		precision: 1e-12,
+		interval,
 		options: {
 			maxIterations: 1000,
 		},
+		precision: 1e-12,
+		target: "max",
 	});
 
-	const error =
-		(amplitude ** 5 / (180 * intervals ** 2)) * Math.abs(evaluate(fourthDerivative, { x: maxPoint }));
+	const error = (amplitude ** 5 / (180 * intervals ** 2)) * Math.abs(evaluate(fourthDerivative, { x: maxPoint }));
 
-	return { result, details: { error } };
+	return { details: { error }, result };
 };
