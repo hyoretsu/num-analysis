@@ -1,32 +1,39 @@
 import { minMaxBisection, minMaxBisectionParams } from "./custom";
-import {
-	bisection,
-	falsePosition,
-	newtonRaphson,
-	newtonRaphsonParams,
-	secant,
-	zerosFunctionParams,
-} from "./functionZeros";
+import { bisection, falsePosition, newtonRaphson, newtonRaphsonParams, secant, zerosFunctionParams } from "./functionZeros";
 import { integrationParams, simpsonRule13, trapezoidalRule } from "./integration";
-import {
-	interpolationParams,
-	lagrangeInterpolation,
-	newtonInterpolation,
-	vandermondeInterpolation,
-} from "./interpolation";
+import { interpolationParams, lagrangeInterpolation, newtonInterpolation, vandermondeInterpolation } from "./interpolation";
 import {
 	doolittleLuDecomposition,
 	doolittleLuDecompositionParams,
+	gaussianElimination,
+	gaussianEliminationParams,
 	gaussJacobi,
 	gaussMethodParams,
 	gaussSeidel,
-	gaussianElimination,
-	gaussianEliminationParams,
 	luComposition,
 	luCompositionParams,
 	spectralRadius,
 	spectralRadiusParams,
 } from "./linearSystems";
+
+export const methodCategories: Record<AllMethods, keyof typeof categorizedMethods> = {
+	bisection: "functionZeros",
+	doolittleLuDecomposition: "linearSystems",
+	falsePosition: "functionZeros",
+	gaussianElimination: "linearSystems",
+	gaussJacobi: "linearSystems",
+	gaussSeidel: "linearSystems",
+	lagrangeInterpolation: "interpolation",
+	luComposition: "linearSystems",
+	minMaxBisection: "custom",
+	newtonInterpolation: "interpolation",
+	newtonRaphson: "functionZeros",
+	secant: "functionZeros",
+	simpsonRule13: "integration",
+	spectralRadius: "linearSystems",
+	trapezoidalRule: "integration",
+	vandermondeInterpolation: "interpolation",
+};
 
 export const categorizedMethods = {
 	custom: {
@@ -49,9 +56,9 @@ export const categorizedMethods = {
 	},
 	linearSystems: {
 		doolittleLuDecomposition,
+		gaussianElimination,
 		gaussJacobi,
 		gaussSeidel,
-		gaussianElimination,
 		luComposition,
 		spectralRadius,
 	},
@@ -83,13 +90,7 @@ export const linearSystemsKeys = [
 	"luComposition",
 	"spectralRadius",
 ];
-export const methodKeys = [
-	...customMethodKeys,
-	...functionZerosKeys,
-	...integrationKeys,
-	...interpolationKeys,
-	...linearSystemsKeys,
-];
+export const methodKeys = [...customMethodKeys, ...functionZerosKeys, ...integrationKeys, ...interpolationKeys, ...linearSystemsKeys];
 
 export const paramsList = {
 	bisection: zerosFunctionParams,
