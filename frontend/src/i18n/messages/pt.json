@@ -2,38 +2,43 @@
 	"func": "Função",
 	"initialX": "X inicial",
 	"methods": {
-		"custom": {
-			"minMaxBisection": "Bisseção Máximo-mínimo",
-			"title": "Variações"
+		"bisection": "Bisseção",
+		"categories": {
+			"custom": "Variações",
+			"functionZeros": "Zeros de Função",
+			"integration": "Integração",
+			"interpolation": "Interpolação",
+			"linearSystems": "Sistemas Lineares"
 		},
-		"functionZeros": {
-			"bisection": "Bisseção",
-			"falsePosition": "Falsa Posição",
-			"newtonRaphson": "Newton-Raphson",
-			"secant": "Secante",
-			"title": "Zeros de Função"
+		"doolittleLuDecomposition": "Decomposição LU (Doolittle)",
+		"falsePosition": "Falsa Posição",
+		"gaussianElimination": "Eliminação Gaussiana",
+		"gaussJacobi": "Gauss-Jacobi",
+		"gaussSeidel": "Gauss-Seidel",
+		"lagrangeInterpolation": "Interpolação de Lagrange",
+		"list": "Lista de Métodos",
+		"luComposition": "Composição LU",
+		"minMaxBisection": "Bisseção Máximo-mínimo",
+		"newtonInterpolation": "Interpolação de Newton",
+		"newtonRaphson": "Newton-Raphson",
+		"options": "Opções",
+		"params": {
+			"coefficients": "Coeficientes",
+			"func": "Função",
+			"independentTerms": "Termos Independentes",
+			"initialX": "X inicial",
+			"l": "Matriz L",
+			"matrix": "Matriz",
+			"maxIterations": "Máximo de iterações",
+			"origFunc": "Função original",
+			"precision": "Precisão",
+			"u": "Matriz U"
 		},
-		"integration": {
-			"simpsonRule13": "Regra 1/3 de Simpson",
-			"title": "Integração",
-			"trapezoidalRule": "Regra dos Trapézios"
-		},
-		"interpolation": {
-			"lagrangeInterpolation": "Interpolação de Lagrange",
-			"newtonInterpolation": "Interpolação de Newton",
-			"title": "Interpolação",
-			"vandermondeInterpolation": "Interpolação por matrizes de Vandemormonde"
-		},
-		"linearSystems": {
-			"doolittleLuDecomposition": "Decomposição LU (Doolittle)",
-			"gaussianElimination": "Eliminação Gaussiana",
-			"gaussJacobi": "Gauss-Jacobi",
-			"gaussSeidel": "Gauss-Seidel",
-			"luComposition": "Composição LU",
-			"spectralRadius": "Critério de Linhas",
-			"title": "Sistemas Lineares"
-		},
-		"list": "Lista de Métodos"
+		"secant": "Secante",
+		"simpsonRule13": "Regra 1/3 de Simpson",
+		"spectralRadius": "Critério de Linhas",
+		"trapezoidalRule": "Regra dos Trapézios",
+		"vandermondeInterpolation": "Interpolação por matrizes de Vandemormonde"
 	},
 	"options": {
 		"bail": "Interromper",

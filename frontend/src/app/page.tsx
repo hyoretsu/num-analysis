@@ -15,14 +15,14 @@ export default function Home() {
 			<Accordion className="mt-4 w-full" variant="contained">
 				{Object.entries(categorizedMethods)
 					.filter(([category]) => category !== "linearSystems")
-					.sort(([a], [b]) => t(`${a}.title`).localeCompare(t(`${b}.title`)))
+					.sort(([a], [b]) => t(`titles.${a}`).localeCompare(t(`titles.${b}`)))
 					.map(([category, methods]) => (
 						<Accordion.Item key={category} value={category}>
-							<Accordion.Control>{t(`${category}.title`)}</Accordion.Control>
+							<Accordion.Control>{t(`titles.${category}`)}</Accordion.Control>
 							<Accordion.Panel>
 								{Object.keys(methods).map(method => (
 									<Card key={method} onClick={() => push(`/calculator/${method}/params`)}>
-										{t(`${category}.${method}`)}
+										{t(`${method}`)}
 									</Card>
 								))}
 							</Accordion.Panel>

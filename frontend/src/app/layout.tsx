@@ -1,4 +1,4 @@
-import { Providers } from "@lib/providers";
+import { Providers } from "@app/providers";
 import { ColorSchemeScript, mantineHtmlProps } from "@mantine/core";
 import "@mantine/core/styles.css";
 import type { Metadata } from "next";

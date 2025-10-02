@@ -1,4 +1,5 @@
 "use client";
+import { MethodDataProvider } from "@context/methodData";
 import { MantineProvider } from "@mantine/core";
 import { theme } from "@styles/theme";
 import { type Locale, NextIntlClientProvider } from "next-intl";
@@ -13,7 +14,9 @@ export interface ProvidersProps {
 export function Providers({ children, locale, messages }: ProvidersProps) {
 	return (
 		<NextIntlClientProvider locale={locale} messages={messages}>
-			<MantineProvider theme={theme}>{children}</MantineProvider>
+			<MantineProvider theme={theme}>
+				<MethodDataProvider>{children}</MethodDataProvider>
+			</MantineProvider>
 		</NextIntlClientProvider>
 	);
 }
