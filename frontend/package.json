@@ -24,6 +24,7 @@
 		"numerical-methods": "workspace:*",
 		"react": "^19.1.1",
 		"react-dom": "^19.1.1",
+		"react-toastify": "^11.0.5",
 		"zustand": "^5.0.8"
 	},
 	"devDependencies": {

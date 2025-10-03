@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { getMessages } from "next-intl/server";
 import { Roboto } from "next/font/google";
 import type { PropsWithChildren } from "react";
+import { ToastContainer } from "react-toastify";
 import WebVitals from "./components/WebVitals";
 import "./globals.css";
 
@@ -62,8 +63,10 @@ export default async function RootLayout({ children }: PropsWithChildren) {
 
 				<ColorSchemeScript />
 			</head>
-			<body className="!pt-[calc(env(safe-area-inset-top)_+_1rem)] !pb-[calc(env(safe-area-inset-bottom)_+_1rem)]">
+			<body className="pt-12 pb-6">
 				<Providers locale={locale} messages={messages}>
+					<ToastContainer />
+
 					<main className="flex w-full flex-col items-center px-4">{children}</main>
 				</Providers>
 
