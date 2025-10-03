@@ -1,6 +1,6 @@
 {
-	"func": "Função",
-	"initialX": "X inicial",
+	"details": "Detalhes",
+	"method": "Método",
 	"methods": {
 		"bisection": "Bisseção",
 		"categories": {
@@ -11,6 +11,9 @@
 			"linearSystems": "Sistemas Lineares"
 		},
 		"doolittleLuDecomposition": "Decomposição LU (Doolittle)",
+		"errors": {
+			"required": "O campo {field} é obrigatório."
+		},
 		"falsePosition": "Falsa Posição",
 		"gaussianElimination": "Eliminação Gaussiana",
 		"gaussJacobi": "Gauss-Jacobi",
@@ -27,12 +30,15 @@
 			"func": "Função",
 			"independentTerms": "Termos Independentes",
 			"initialX": "X inicial",
+			"interval": "De,Até",
 			"l": "Matriz L",
 			"matrix": "Matriz",
 			"maxIterations": "Máximo de iterações",
 			"origFunc": "Função original",
+			"pointN": "Número de pontos",
 			"precision": "Precisão",
-			"u": "Matriz U"
+			"u": "Matriz U",
+			"x": "Intervalo"
 		},
 		"secant": "Secante",
 		"simpsonRule13": "Regra 1/3 de Simpson",
@@ -46,6 +52,5 @@
 		"maxIterations": "Máximo de iterações",
 		"origFunc": "Função original",
 		"relativeError": "Erro relativo"
-	},
-	"precision": "Precisão"
+	}
 }

@@ -11,9 +11,10 @@ import { paramComponents } from "./components";
 
 type MethodParams = string[];
 
-const paramPlaceholders = new Map<string, string>([
+const paramPlaceholders = new Map<string, string | number[]>([
 	["func", "10x^(3x) + 5x + 2"],
 	["initialX", "0"],
+	["interval", [0, 1]],
 	["precision", "1e-9 ou 1*10^(-9)"],
 	["maxIterations", "100"],
 	["origFunc", "5x + 10"],
@@ -56,6 +57,7 @@ export default function ParamsPage() {
 	);
 
 	const method = dynamicParams.method as AllMethods;
+
 	const { options, params } = useMemo(() => {
 		const params: MethodParams[] = [];
 		const options: MethodParams[] = [];
@@ -82,7 +84,7 @@ export default function ParamsPage() {
 					paramComponents.get(value)?.({
 						label: t(`params.${name}`),
 						onChange: paramUpdateFuncs.get(name)!,
-						placeholder: paramPlaceholders.get(name),
+						placeholder: paramPlaceholders.get(name)?.toString(),
 					}),
 				)}
 
@@ -94,7 +96,7 @@ export default function ParamsPage() {
 								paramComponents.get(value)?.({
 									label: t(`params.${name}`),
 									onChange: paramUpdateFuncs.get(name)!,
-									placeholder: paramPlaceholders.get(name),
+									placeholder: paramPlaceholders.get(name)?.toString(),
 								}),
 							)}
 						</Accordion.Panel>
