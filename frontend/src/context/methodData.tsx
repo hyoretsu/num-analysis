@@ -8,7 +8,7 @@ interface MethodDataContext {
 	setParams: (newValue: SetStateAction<MethodData>) => void;
 }
 
-const MethodDataContext = createContext<MethodDataContext>({} as MethodDataContext);
+const MethodDataContext = createContext<MethodDataContext>(null as unknown as MethodDataContext);
 
 export const MethodDataProvider: React.FC<PropsWithChildren> = ({ children }) => {
 	const [params, setParams] = useDebouncedState<MethodData>({}, 1000);
