@@ -31,7 +31,9 @@
 			"matrix": "Matriz",
 			"maxIterations": "Máximo de iterações",
 			"origFunc": "Função original",
+			"pointN": "Nº de pontos",
 			"precision": "Precisão",
+			"relativeError": "Erro relativo",
 			"u": "Matriz U"
 		},
 		"secant": "Secante",
