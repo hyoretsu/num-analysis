@@ -21,7 +21,7 @@ export default function Home() {
 							<Accordion.Control>{t(`categories.${category}`)}</Accordion.Control>
 							<Accordion.Panel>
 								{Object.keys(methods).map(method => (
-									<Card key={method} onClick={() => push(`/calculator/${method}/params`)}>
+									<Card key={method} onClick={() => push(`/${method}/calculator/params`)}>
 										{t(`${method}`)}
 									</Card>
 								))}

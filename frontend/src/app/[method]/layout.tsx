@@ -1,3 +1,4 @@
+import { methodKeys } from "numerical-methods";
 import type { PropsWithChildren } from "react";
 
 export default function MethodLayout({ children }: PropsWithChildren) {
@@ -5,5 +6,5 @@ export default function MethodLayout({ children }: PropsWithChildren) {
 }
 
 export async function generateStaticParams() {
-	return [{ method: "newtonRaphson" }];
+	return methodKeys.map(method => ({ method }));
 }
