@@ -48,6 +48,7 @@
         "postcss-preset-mantine": "^1.18.0",
         "postcss-simple-vars": "^7.0.1",
         "tailwindcss": "^4.1.13",
+        "turbo": "2.5.9-canary.4",
       },
     },
     "numerical-methods": {
@@ -868,6 +869,20 @@
     "tslib": ["tslib@2.8.1", "", {}, "sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w=="],
 
     "tsup": ["tsup@8.5.0", "", { "dependencies": { "bundle-require": "^5.1.0", "cac": "^6.7.14", "chokidar": "^4.0.3", "consola": "^3.4.0", "debug": "^4.4.0", "esbuild": "^0.25.0", "fix-dts-default-cjs-exports": "^1.0.0", "joycon": "^3.1.1", "picocolors": "^1.1.1", "postcss-load-config": "^6.0.1", "resolve-from": "^5.0.0", "rollup": "^4.34.8", "source-map": "0.8.0-beta.0", "sucrase": "^3.35.0", "tinyexec": "^0.3.2", "tinyglobby": "^0.2.11", "tree-kill": "^1.2.2" }, "peerDependencies": { "@microsoft/api-extractor": "^7.36.0", "@swc/core": "^1", "postcss": "^8.4.12", "typescript": ">=4.5.0" }, "optionalPeers": ["@microsoft/api-extractor", "@swc/core", "postcss", "typescript"], "bin": { "tsup": "dist/cli-default.js", "tsup-node": "dist/cli-node.js" } }, "sha512-VmBp77lWNQq6PfuMqCHD3xWl22vEoWsKajkF8t+yMBawlUS8JzEI+vOVMeuNZIuMML8qXRizFKi9oD5glKQVcQ=="],
+
+    "turbo": ["turbo@2.5.9-canary.4", "", { "optionalDependencies": { "turbo-darwin-64": "2.5.9-canary.4", "turbo-darwin-arm64": "2.5.9-canary.4", "turbo-linux-64": "2.5.9-canary.4", "turbo-linux-arm64": "2.5.9-canary.4", "turbo-windows-64": "2.5.9-canary.4", "turbo-windows-arm64": "2.5.9-canary.4" }, "bin": { "turbo": "bin/turbo" } }, "sha512-j/DynIRQObZDQR846XlI2kSJh0MAJQoqH4ujRFU0reUP0K4D1DskdvgX6cKp2Gq9ik1cAl1gMfD9QC7KLjRbqw=="],
+
+    "turbo-darwin-64": ["turbo-darwin-64@2.5.9-canary.4", "", { "os": "darwin", "cpu": "x64" }, "sha512-+R+CiGPkV2FlGrFbFLR+dg67NiHxBfVFsFPdnn5X9wtYO0x+yZMV7vw721GGPbzsNqoASIbhvmjDUXfKEs3YiQ=="],
+
+    "turbo-darwin-arm64": ["turbo-darwin-arm64@2.5.9-canary.4", "", { "os": "darwin", "cpu": "arm64" }, "sha512-bXvqx7eBaF+Lo4ZZ1naGrVtBcUcsqYtsiZygHzxO8USoWBoHnvXTQ/VD5MMuWJ4Iaa6NZSc6rk1xpmFW3mHTuQ=="],
+
+    "turbo-linux-64": ["turbo-linux-64@2.5.9-canary.4", "", { "os": "linux", "cpu": "x64" }, "sha512-fgGDS2KWJ+gA/XuH4dN129wSPvUAiCT6GB2lavb0m3c+DgAd1hh03s9DSZstBM4nNKv6CDf37h+RXL1oxohsuQ=="],
+
+    "turbo-linux-arm64": ["turbo-linux-arm64@2.5.9-canary.4", "", { "os": "linux", "cpu": "arm64" }, "sha512-XZvKJvEF/mdaW/G5OgraZ2I+xqgJozPbnSRYyrVri94hRk+Eehpcwvv5FHOmyfuSdNiervvnp/XwW0LB60mxWg=="],
+
+    "turbo-windows-64": ["turbo-windows-64@2.5.9-canary.4", "", { "os": "win32", "cpu": "x64" }, "sha512-fCooLc0lzL8wj4lRvL7//DOEvRfcTIsf3RFhTUPsqjFwfCuqYdcwAa3ipcGZGevaPSF0Ry5TWq6H15+7jhaAYQ=="],
+
+    "turbo-windows-arm64": ["turbo-windows-arm64@2.5.9-canary.4", "", { "os": "win32", "cpu": "arm64" }, "sha512-oTkUBUBPwOwu4NIUelDf7RqaNZNsoWqJDAucutlZxHOrnz7cPRyrX8Ls216Pml/O1Pc06SS22g5bwAzOth7z2w=="],
 
     "type-check": ["type-check@0.4.0", "", { "dependencies": { "prelude-ls": "^1.2.1" } }, "sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew=="],
 
