@@ -5,18 +5,9 @@ import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
 import { type AllMethods, methodCategories, paramsList } from "numerical-methods";
 import { useEffect, useMemo } from "react";
-import { paramComponents } from "./components";
+import { getParamComponent } from "./components";
 
 type MethodParams = string[];
-
-const paramPlaceholders = new Map<string, string | number[]>([
-	["func", "10x^(3x) + 5x + 2"],
-	["initialX", "0"],
-	["interval", [0, 1]],
-	["precision", "1e-9 ou 1*10^(-9)"],
-	["maxIterations", "100"],
-	["origFunc", "5x + 10"],
-]);
 
 export default function ParamsPage() {
 	const dynamicParams = useParams();
@@ -30,7 +21,11 @@ export default function ParamsPage() {
 
 		Object.entries(paramsList[method]).forEach(([name, value]) => {
 			if (typeof value !== "string") {
-				options.push(...Object.entries(value).map(([name2, value2]) => [name2, value2]));
+				options.push(
+					...Object.entries(value as Record<string, string>)
+						.filter(([name2]) => !["conditionsWhitelist", "relativeError"].includes(name2))
+						.map(([name2, value2]) => [name2, value2]),
+				);
 				return;
 			}
 
@@ -44,14 +39,10 @@ export default function ParamsPage() {
 
 	// Initialize default params
 	useEffect(() => {
-		if (params.some(([param]) => param === "precision")) {
-			setParams({
-				precision: 1e-9,
-			});
-		}
+		setParam("precision", 1e-9);
 
 		return () => setParams({});
-	}, [params, setParams]);
+	}, [setParam, setParams]);
 
 	return (
 		<section className="flex flex-col items-center gap-4">
@@ -60,11 +51,12 @@ export default function ParamsPage() {
 
 			<div className="w-full">
 				{params.map(([name, type]) =>
-					paramComponents.get(type)?.({
+					getParamComponent({
 						label: t(`params.${name}`),
 						name,
-						placeholder: paramPlaceholders.get(name)?.toString(),
 						setParam,
+						t,
+						type,
 					}),
 				)}
 
@@ -74,11 +66,12 @@ export default function ParamsPage() {
 							<Accordion.Control>{t("options")}</Accordion.Control>
 							<Accordion.Panel>
 								{options.map(([name, type]) =>
-									paramComponents.get(type)?.({
+									getParamComponent({
 										label: t(`params.${name}`),
 										name,
-										placeholder: paramPlaceholders.get(name)?.toString(),
 										setParam,
+										t,
+										type,
 									}),
 								)}
 							</Accordion.Panel>

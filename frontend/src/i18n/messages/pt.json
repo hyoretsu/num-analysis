@@ -1,6 +1,4 @@
 {
-	"func": "Função",
-	"initialX": "X inicial",
 	"methods": {
 		"bisection": "Bisseção",
 		"categories": {
@@ -23,18 +21,27 @@
 		"newtonRaphson": "Newton-Raphson",
 		"options": "Opções",
 		"params": {
+			"bail": "Parada antecipada",
 			"coefficients": "Coeficientes",
+			"conditionsWhitelist": "Condições de parada",
 			"func": "Função",
 			"independentTerms": "Termos Independentes",
 			"initialX": "X inicial",
+			"interval": "De,Até",
 			"l": "Matriz L",
 			"matrix": "Matriz",
+			"max": "Máximo",
 			"maxIterations": "Máximo de iterações",
+			"min": "Mínimo",
 			"origFunc": "Função original",
-			"pointN": "Nº de pontos",
+			"pointN": "Número de pontos",
 			"precision": "Precisão",
 			"relativeError": "Erro relativo",
-			"u": "Matriz U"
+			"target": "Alvo",
+			"targetX": "Ponto para calcular",
+			"u": "Matriz U",
+			"x": "Pontos",
+			"y": "Resultados"
 		},
 		"secant": "Secante",
 		"simpsonRule13": "Regra 1/3 de Simpson",
@@ -48,6 +55,5 @@
 		"maxIterations": "Máximo de iterações",
 		"origFunc": "Função original",
 		"relativeError": "Erro relativo"
-	},
-	"precision": "Precisão"
+	}
 }
