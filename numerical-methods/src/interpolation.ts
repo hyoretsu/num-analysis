@@ -32,7 +32,7 @@ export namespace Interpolation {
 }
 
 export const interpolationParams = {
-	targetX: "number|undefined",
+	targetX: "number?",
 	x: "number[]",
 	y: "number[]",
 };

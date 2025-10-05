@@ -92,7 +92,7 @@ export const linearSystemsKeys = [
 ];
 export const methodKeys = [...customMethodKeys, ...functionZerosKeys, ...integrationKeys, ...interpolationKeys, ...linearSystemsKeys];
 
-export const paramsList = {
+export const paramsList: Record<AllMethods, Record<string, string | Record<string, string>>> = {
 	bisection: zerosFunctionParams,
 	doolittleLuDecomposition: doolittleLuDecompositionParams,
 	falsePosition: zerosFunctionParams,

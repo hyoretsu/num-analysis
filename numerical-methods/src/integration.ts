@@ -7,8 +7,8 @@ export type Integration = (data: Integration.Params) => Integration.Return;
 export namespace Integration {
 	export interface Params {
 		func: string;
+		interval: [number, number];
 		pointN: number;
-		x: [number, number];
 	}
 
 	export type Result = number;
@@ -23,11 +23,11 @@ export namespace Integration {
 
 export const integrationParams = {
 	func: "string",
+	interval: "[number,number]",
 	pointN: "number",
-	x: "[number,number]",
 };
 
-export const trapezoidalRule: Integration = ({ func, pointN, x: interval }) => {
+export const trapezoidalRule: Integration = ({ func, pointN, interval }) => {
 	const intervals = pointN - 1;
 
 	const amplitude = (interval[1] - interval[0]) / intervals;
@@ -64,7 +64,7 @@ export const trapezoidalRule: Integration = ({ func, pointN, x: interval }) => {
 	return { details: { error }, result };
 };
 
-export const simpsonRule13: Integration = ({ func, pointN, x: interval }) => {
+export const simpsonRule13: Integration = ({ func, pointN, interval }) => {
 	const intervals = pointN - 1;
 
 	const amplitude = (interval[1] - interval[0]) / intervals;

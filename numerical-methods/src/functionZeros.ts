@@ -75,18 +75,18 @@ export namespace FunctionZeros {
 }
 
 const functionZerosOptionsParams = {
-	bail: "boolean",
-	conditionsWhitelist: "[boolean,boolean]",
-	maxIterations: "number",
-	origFunc: "string",
-	relativeError: "boolean",
+	bail: "boolean?",
+	conditionsWhitelist: "[boolean,boolean]?",
+	maxIterations: "number?",
+	origFunc: "string?",
+	relativeError: "number?",
 };
 
 export const zerosFunctionParams = {
 	func: "string",
 	interval: "[number,number]",
 	options: functionZerosOptionsParams,
-	precision: "number",
+	precision: "number?",
 };
 
 export const bisection: FunctionZeros.Simple = ({

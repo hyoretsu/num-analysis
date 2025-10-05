@@ -321,9 +321,9 @@ export const spectralRadius = (coefficients: Matrix): number => {
 export const gaussMethodParams = {
 	...linearSystemParams,
 	options: {
-		maxIterations: "number",
+		maxIterations: "number?",
 	},
-	precision: "number",
+	precision: "number?",
 };
 
 export const gaussJacobi: LinearSystems.GaussJacobi = ({
