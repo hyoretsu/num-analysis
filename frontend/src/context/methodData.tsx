@@ -1,10 +1,12 @@
 import { useDebouncedState } from "@mantine/hooks";
-import { createContext, type PropsWithChildren, type SetStateAction, useContext, useMemo } from "react";
+import { merge } from "es-toolkit";
+import { createContext, type PropsWithChildren, type SetStateAction, useCallback, useContext, useMemo } from "react";
 
 type MethodData = Record<string, any>;
 
-interface MethodDataContext {
+export interface MethodDataContext {
 	params: MethodData;
+	setParam: (field: string, value: any) => void;
 	setParams: (newValue: SetStateAction<MethodData>) => void;
 }
 
@@ -13,7 +15,25 @@ const MethodDataContext = createContext<MethodDataContext>(null as unknown as Me
 export const MethodDataProvider: React.FC<PropsWithChildren> = ({ children }) => {
 	const [params, setParams] = useDebouncedState<MethodData>({}, 1000);
 
-	const methodData: MethodDataContext = useMemo(() => ({ params, setParams }), [params, setParams]);
+	const setParam = useCallback(
+		(field: string, value: any) => {
+			const fieldObj = {
+				[field]: value,
+			};
+
+			setParams(old => merge(old, field.startsWith("options") ? { options: fieldObj } : fieldObj));
+		},
+		[setParams],
+	);
+
+	const methodData: MethodDataContext = useMemo(
+		() => ({
+			params,
+			setParam,
+			setParams,
+		}),
+		[params, setParam, setParams],
+	);
 
 	return <MethodDataContext.Provider value={methodData}>{children}</MethodDataContext.Provider>;
 };
