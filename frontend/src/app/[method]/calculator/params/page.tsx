@@ -68,21 +68,23 @@ export default function ParamsPage() {
 					}),
 				)}
 
-				<Accordion className="mt-4 w-full" variant="contained">
-					<Accordion.Item value="options">
-						<Accordion.Control>{t("options")}</Accordion.Control>
-						<Accordion.Panel>
-							{options.map(([name, type]) =>
-								paramComponents.get(type)?.({
-									label: t(`params.${name}`),
-									name,
-									placeholder: paramPlaceholders.get(name)?.toString(),
-									setParam,
-								}),
-							)}
-						</Accordion.Panel>
-					</Accordion.Item>
-				</Accordion>
+				{options.length > 0 && (
+					<Accordion className="mt-4 w-full" variant="contained">
+						<Accordion.Item value="options">
+							<Accordion.Control>{t("options")}</Accordion.Control>
+							<Accordion.Panel>
+								{options.map(([name, type]) =>
+									paramComponents.get(type)?.({
+										label: t(`params.${name}`),
+										name,
+										placeholder: paramPlaceholders.get(name)?.toString(),
+										setParam,
+									}),
+								)}
+							</Accordion.Panel>
+						</Accordion.Item>
+					</Accordion>
+				)}
 			</div>
 
 			<Button onClick={() => {}}>Calcular</Button>
