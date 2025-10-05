@@ -1,6 +1,5 @@
 import { Providers } from "@app/providers";
 import { ColorSchemeScript, mantineHtmlProps } from "@mantine/core";
-import "@mantine/core/styles.css";
 import type { Metadata } from "next";
 import { getMessages } from "next-intl/server";
 import { Roboto } from "next/font/google";
@@ -53,7 +52,6 @@ export default async function RootLayout({ children }: PropsWithChildren) {
 	return (
 		<html className={roboto.className} lang={locale} {...mantineHtmlProps}>
 			<head>
-				<link href="/site.webmanifest" rel="manifest" />
 				<meta content={viewport.themeColor} name="theme-color" />
 
 				<meta

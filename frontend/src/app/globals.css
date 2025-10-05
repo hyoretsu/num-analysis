@@ -1,13 +1,7 @@
 @import "tailwindcss";
+@import "@mantine/core/styles.layer.css";
 
 @layer base {
-	* {
-		box-sizing: border-box;
-		padding: 0;
-		margin: 0;
-		outline: 0;
-	}
-
 	body {
 		display: flex;
 		flex-direction: column;
