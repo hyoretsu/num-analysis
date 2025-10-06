@@ -1,4 +1,6 @@
 {
+	"details": "Detalhes",
+	"method": "Método",
 	"methods": {
 		"bisection": "Bisseção",
 		"categories": {
@@ -46,6 +48,48 @@
 			"u": "Matriz U",
 			"x": "Pontos",
 			"y": "Resultados"
+		},
+		"results": {
+			"bisection": {
+				"condition1": "f(x)",
+				"condition2": "Erro relativo",
+				"interval": "a,b",
+				"iteration": "Iteração (k)",
+				"results": "f(a),f(b)",
+				"x": "Próximo valor (xₖ)"
+			},
+			"falsePosition": {
+				"condition1": "f(x)",
+				"condition2": "Erro relativo",
+				"interval": "a,b",
+				"iteration": "Iteração (k)",
+				"results": "f(a),f(b)",
+				"x": "Próximo valor (xₖ)"
+			},
+			"minMaxBisection": {
+				"condition1": "f(x)",
+				"interval": "a,b",
+				"iteration": "Iteração (k)",
+				"results": "f(a),f(b)",
+				"x": "Próximo valor (xₖ)"
+			},
+			"newtonRaphson": {
+				"condition1": "Diferença absoluta (|xₖ - xₖ₋₁|)",
+				"condition2": "Resultado absoluto (|f(xₖ₋₁)|)",
+				"diffY": "Derivada [f'(xₖ₋₁)]",
+				"iteration": "Iteração (k)",
+				"prevX": "Valor (xₖ₋₁)",
+				"prevY": "Resultado [f(xₖ₋₁)]",
+				"x": "Próximo valor (xₖ)"
+			},
+			"secant": {
+				"condition1": "Erro absoluto [f(c) - f(a)]",
+				"condition2": "Erro relativo",
+				"interval": "a,b",
+				"iteration": "Iteração (k)",
+				"results": "f(a),f(b)",
+				"x": "Próximo valor (c)"
+			}
 		},
 		"secant": "Secante",
 		"simpsonRule13": "Regra 1/3 de Simpson",
