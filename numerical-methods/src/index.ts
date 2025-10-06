@@ -63,6 +63,8 @@ export const categorizedMethods = {
 		spectralRadius,
 	},
 };
+export type MethodCategories = keyof typeof categorizedMethods;
+
 export const allMethods = {
 	...categorizedMethods.custom,
 	...categorizedMethods.functionZeros,
