@@ -9,6 +9,10 @@
 			"linearSystems": "Sistemas Lineares"
 		},
 		"doolittleLuDecomposition": "Decomposição LU (Doolittle)",
+		"errors": {
+			"required": "O campo \"{field}\" é obrigatório.",
+			"requiredMultiple": "Os campos {field} são obrigatórios."
+		},
 		"falsePosition": "Falsa Posição",
 		"gaussianElimination": "Eliminação Gaussiana",
 		"gaussJacobi": "Gauss-Jacobi",

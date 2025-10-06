@@ -6,7 +6,7 @@ type MethodData = Record<string, any>;
 
 export interface MethodDataContext {
 	params: MethodData;
-	setParam: (field: string, value: any) => void;
+	setParam: (field: string, value: any, index?: number) => void;
 	setParams: (newValue: SetStateAction<MethodData>) => void;
 }
 
@@ -15,13 +15,24 @@ const MethodDataContext = createContext<MethodDataContext>(null as unknown as Me
 export const MethodDataProvider: React.FC<PropsWithChildren> = ({ children }) => {
 	const [params, setParams] = useDebouncedState<MethodData>({}, 1000);
 
-	const setParam = useCallback(
-		(field: string, value: any) => {
-			const fieldObj = {
-				[field]: value,
-			};
+	const setParam: MethodDataContext["setParam"] = useCallback(
+		(field, value, index) => {
+			const sentIndex = index !== undefined;
+			const inOptions = field.startsWith("options");
 
-			setParams(old => merge(old, field.startsWith("options") ? { options: fieldObj } : fieldObj));
+			const fieldObj: Record<string, any> = {};
+			if (!sentIndex) {
+				fieldObj[field] = value;
+			}
+
+			setParams(old => {
+				if (sentIndex) {
+					fieldObj[field] = (inOptions ? old.options : old)[field] ?? [];
+					fieldObj[field][index] = value;
+				}
+
+				return merge(old, inOptions ? { options: fieldObj } : fieldObj);
+			});
 		},
 		[setParams],
 	);

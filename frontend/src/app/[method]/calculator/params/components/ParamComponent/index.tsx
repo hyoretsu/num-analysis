@@ -5,13 +5,14 @@ import type { ReactElement } from "react";
 import { BooleanInput, EnumInput, IntervalInput, NumberArrayInput, NumberInput, StringInput } from "./inputs";
 
 export interface ParamComponentsProps {
+	index?: number;
 	label: string;
 	name: string;
 	setParam: MethodDataContext["setParam"];
 	placeholder?: string | undefined;
 	required: boolean;
 	transform?: ((value: string) => any) | undefined;
-	values?: string[] | undefined;
+	values?: Array<{ label: string; value: string }> | undefined;
 }
 
 const components = new Map<string, (props: ParamComponentsProps) => ReactElement>([
@@ -55,6 +56,11 @@ export const getParamComponent = ({ label, name, setParam, t, type: typeO }: Get
 		placeholder: placeholders.get(name)?.toString(),
 		required,
 		setParam,
-		...(values?.length && { values: values.map(each => t(`params.${each}`)) }),
+		...(values?.length && {
+			values: values.map(value => ({
+				label: t(`params.${value}`),
+				value,
+			})),
+		}),
 	});
 };

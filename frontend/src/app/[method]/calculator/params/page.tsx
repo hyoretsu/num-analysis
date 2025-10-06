@@ -1,16 +1,19 @@
 "use client";
 import { useMethodData } from "@context/methodData";
 import { Accordion, Button, Text, Title } from "@mantine/core";
+import { isValidParam } from "@utils";
 import { useTranslations } from "next-intl";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { type AllMethods, methodCategories, paramsList } from "numerical-methods";
 import { useEffect, useMemo } from "react";
+import { toast } from "react-toastify";
 import { getParamComponent } from "./components";
 
 type MethodParams = string[];
 
 export default function ParamsPage() {
 	const dynamicParams = useParams();
+	const { push } = useRouter();
 	const t = useTranslations("methods");
 
 	const method = dynamicParams.method as AllMethods;
@@ -19,23 +22,23 @@ export default function ParamsPage() {
 		const params: MethodParams[] = [];
 		const options: MethodParams[] = [];
 
-		Object.entries(paramsList[method]).forEach(([name, value]) => {
-			if (typeof value !== "string") {
+		Object.entries(paramsList[method]).forEach(([param, type]) => {
+			if (typeof type !== "string") {
 				options.push(
-					...Object.entries(value as Record<string, string>)
-						.filter(([name2]) => !["conditionsWhitelist", "relativeError"].includes(name2))
-						.map(([name2, value2]) => [name2, value2]),
+					...Object.entries(type as Record<string, string>)
+						.filter(([param2]) => !["conditionsWhitelist", "relativeError"].includes(param2))
+						.map(([param2, type2]) => [param2, type2]),
 				);
 				return;
 			}
 
-			params.push([name, value]);
+			params.push([param, type]);
 		});
 
 		return { options, params };
 	}, [method]);
 
-	const { setParam, setParams } = useMethodData();
+	const { params: inputParams, setParam, setParams } = useMethodData();
 
 	// Initialize default params
 	useEffect(() => {
@@ -43,6 +46,41 @@ export default function ParamsPage() {
 
 		return () => setParams({});
 	}, [setParam, setParams]);
+
+	const calculateResult = () => {
+		for (const [param, type] of Object.entries(paramsList[method])) {
+			if (param === "options" || param === "precision") {
+				continue;
+			}
+
+			const isValid = isValidParam({
+				param,
+				type: type as string,
+				value: inputParams[param],
+			});
+
+			if (!isValid) {
+				const field = t(`params.${param}`);
+
+				if (field.includes(",")) {
+					toast.error(
+						t("errors.requiredMultiple", {
+							field: field
+								.split(",")
+								.map(each => `"${each}"`)
+								.join(" e "),
+						}),
+					);
+				} else {
+					toast.error(t("errors.required", { field }));
+				}
+
+				return;
+			}
+		}
+
+		push(`/${method}/calculator/result`);
+	};
 
 	return (
 		<section className="flex flex-col items-center gap-4">
@@ -80,7 +118,7 @@ export default function ParamsPage() {
 				)}
 			</div>
 
-			<Button onClick={() => {}}>Calcular</Button>
+			<Button onClick={calculateResult}>Calcular</Button>
 		</section>
 	);
 }

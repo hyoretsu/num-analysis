@@ -1,18 +1,17 @@
 import { Checkbox, Flex, Select, TextInput } from "@mantine/core";
 import { digitFromSuperscript } from "@utils";
-import { debounce } from "es-toolkit";
 import { parse } from "mathjs";
-import type { ChangeEvent } from "react";
 import type { ParamComponentsProps } from ".";
 
-const debouncedUpdate = ({ name, setParam, transform = value => value }: Pick<ParamComponentsProps, "name" | "setParam" | "transform">) =>
-	debounce((e: ChangeEvent<HTMLInputElement>) => {
-		setParam(name, transform(e.target.value));
-	}, 1000);
-
-export function BaseInput({ label, placeholder, required, ...updateProps }: ParamComponentsProps) {
+export function BaseInput({ index, label, name, placeholder, required, setParam, transform = value => value }: ParamComponentsProps) {
 	return (
-		<TextInput className="flex-1" label={label} onChange={debouncedUpdate(updateProps)} placeholder={placeholder} required={required} />
+		<TextInput
+			className="flex-1"
+			label={label}
+			onChange={e => setParam(name, transform(e.target.value), index)}
+			placeholder={placeholder}
+			required={required}
+		/>
 	);
 }
 
@@ -29,18 +28,16 @@ export function BooleanInput({ label, name, setParam, transform, values, ...prop
 	);
 }
 
-export function EnumInput({ label, name, setParam, transform, values, ...props }: ParamComponentsProps) {
+export function EnumInput({ label, name, setParam, values, ...props }: ParamComponentsProps) {
 	return (
 		<Select
 			key={label}
 			{...props}
 			data={values!}
 			label={label}
-			onSelect={debouncedUpdate({
-				name,
-				setParam,
-				transform,
-			})}
+			onChange={value => {
+				setParam(name, value);
+			}}
 		/>
 	);
 }
@@ -51,8 +48,20 @@ export function IntervalInput({ label, placeholder, ...props }: ParamComponentsP
 
 	return (
 		<Flex gap="lg" key={label}>
-			<BaseInput {...props} label={labels[0]} placeholder={placeholders?.[0]} transform={parse} />
-			<BaseInput {...props} label={labels[1]} placeholder={placeholders?.[1]} transform={parse} />
+			<BaseInput
+				{...props}
+				index={0}
+				label={labels[0]}
+				placeholder={placeholders?.[0]}
+				transform={value => parse(value).evaluate()}
+			/>
+			<BaseInput
+				{...props}
+				index={1}
+				label={labels[1]}
+				placeholder={placeholders?.[1]}
+				transform={value => parse(value).evaluate()}
+			/>
 		</Flex>
 	);
 }
