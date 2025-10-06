@@ -18,7 +18,7 @@ export namespace FunctionZeros {
 	export interface Params {
 		func: string;
 		interval: [number, number];
-		precision?: number;
+		precision: number;
 		options?: Options;
 	}
 
