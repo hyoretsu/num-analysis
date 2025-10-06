@@ -1,4 +1,4 @@
-import { methodKeys } from "numerical-methods";
+import { categorizedMethods } from "numerical-methods";
 import type { PropsWithChildren } from "react";
 
 export default function MethodLayout({ children }: PropsWithChildren) {
@@ -6,5 +6,8 @@ export default function MethodLayout({ children }: PropsWithChildren) {
 }
 
 export async function generateStaticParams() {
-	return methodKeys.map(method => ({ method }));
+	return Object.entries(categorizedMethods)
+		.filter(([category]) => category !== "linearSystems")
+		.flatMap(([, methods]) => Object.keys(methods))
+		.map(method => ({ method }));
 }
