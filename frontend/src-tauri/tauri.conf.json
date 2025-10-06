@@ -7,7 +7,7 @@
 		"windows": [
 			{
 				"height": 600,
-				"title": "num-analysis",
+				"title": "NumAnalysis",
 				"width": 800
 			}
 		]
@@ -30,6 +30,6 @@
 		"targets": "all"
 	},
 	"identifier": "com.hyoretsu.numanalysis",
-	"productName": "num-analysis",
+	"productName": "NumAnalysis",
 	"version": "1.0.0"
 }
