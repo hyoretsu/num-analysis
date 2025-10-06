@@ -42,10 +42,8 @@ export default function ParamsPage() {
 
 	// Initialize default params
 	useEffect(() => {
-		setParam("precision", 1e-9);
-
-		return () => setParams({});
-	}, [setParam, setParams]);
+		setParams({ precision: 1e-9 });
+	}, [setParams]);
 
 	const calculateResult = () => {
 		for (const [param, type] of Object.entries(paramsList[method])) {
