@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 		title: siteName,
 	},
 	applicationName: siteName,
-	metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL!),
+	metadataBase: new URL("https://num-analysis.hyoretsu.com"),
 	openGraph: {
 		images: [
 			{
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
 	},
 	twitter: {
 		card: "summary_large_image",
-		creator: `${process.env.NEXT_PUBLIC_SITE_CONTENT_CREATOR}` || "@hyoretsu",
+		creator: "@hyoretsu",
 	},
 };
 export const viewport = {
