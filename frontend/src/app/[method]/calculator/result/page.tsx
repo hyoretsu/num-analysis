@@ -2,8 +2,9 @@
 import { useMethodData } from "@context/methodData";
 import { Accordion, Stack, Text, Title } from "@mantine/core";
 import { useTranslations } from "next-intl";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { type AllMethods, allMethods, methodCategories } from "numerical-methods";
+import { useEffect } from "react";
 import { resultComponents } from "./components";
 
 export default function Results() {
@@ -13,6 +14,18 @@ export default function Results() {
 	const method = params.method as AllMethods;
 
 	const { params: methodParams } = useMethodData();
+	const { replace } = useRouter();
+
+	const hasParams = methodParams && Object.keys(methodParams).length > 0;
+	useEffect(() => {
+		if (!hasParams) {
+			replace(`/${method}/calculator/params`);
+		}
+	}, [hasParams, method, replace]);
+
+	if (!hasParams) {
+		return null;
+	}
 
 	const methodResults = allMethods[method](methodParams as any) as { result: any; details: any[] };
 
