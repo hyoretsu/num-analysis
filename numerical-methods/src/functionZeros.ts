@@ -18,7 +18,7 @@ export namespace FunctionZeros {
 	export interface Params {
 		func: string;
 		interval: [number, number];
-		precision: number;
+		precision?: number;
 		options?: Options;
 	}
 
@@ -92,7 +92,7 @@ export const zerosFunctionParams = {
 export const bisection: FunctionZeros.Simple = ({
 	func,
 	interval: [a, b],
-	precision,
+	precision = 1e-9,
 	options: { bail = false, conditionsWhitelist = [true, true], maxIterations = Number.POSITIVE_INFINITY, origFunc, relativeError } = {},
 }) => {
 	if (precision === 0) {
@@ -172,7 +172,7 @@ export const bisection: FunctionZeros.Simple = ({
 export const falsePosition: FunctionZeros.Simple = ({
 	func,
 	interval: [a, b],
-	precision,
+	precision = 1e-9,
 	options: {
 		bail = false,
 		conditionsWhitelist = [true, true],
@@ -254,13 +254,13 @@ export const newtonRaphsonParams = {
 	func: "string",
 	initialX: "number",
 	options: functionZerosOptionsParams,
-	precision: "number",
+	precision: "number?",
 };
 
 export const newtonRaphson: FunctionZeros.NewtonRaphson = ({
 	func,
 	initialX: x,
-	precision,
+	precision = 1e-9,
 	options: {
 		bail = false,
 		conditionsWhitelist = [true, true],
@@ -329,7 +329,7 @@ export const newtonRaphson: FunctionZeros.NewtonRaphson = ({
 export const secant: FunctionZeros.Secant = ({
 	func,
 	interval: [a, b],
-	precision,
+	precision = 1e-9,
 	options: {
 		bail = false,
 		conditionsWhitelist = [true, true],
