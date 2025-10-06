@@ -1,7 +1,7 @@
 export * from "./digitFromSuperscript";
 
-export const getNameRequired = (param: string) => {
-	let [type, required] = param.split("?");
+export const getNameRequired = (paramType: string) => {
+	let [type, required] = paramType.split("?");
 
 	let values: string[] | undefined;
 	if (type.includes("|")) {
@@ -10,7 +10,7 @@ export const getNameRequired = (param: string) => {
 	}
 
 	return {
-		required: !!required,
+		required: required === undefined,
 		type,
 		values,
 	};
