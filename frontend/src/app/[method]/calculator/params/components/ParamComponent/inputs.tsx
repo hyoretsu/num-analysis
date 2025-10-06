@@ -29,11 +29,13 @@ export function BooleanInput({ label, name, setParam, transform, values, ...prop
 	);
 }
 
-export function EnumInput({ name, setParam, transform, values, ...props }: ParamComponentsProps) {
+export function EnumInput({ label, name, setParam, transform, values, ...props }: ParamComponentsProps) {
 	return (
 		<Select
+			key={label}
 			{...props}
 			data={values!}
+			label={label}
 			onSelect={debouncedUpdate({
 				name,
 				setParam,
