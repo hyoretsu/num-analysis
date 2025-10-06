@@ -1,6 +1,6 @@
-import { useDebouncedState } from "@mantine/hooks";
+import { useDebouncedCallback } from "@mantine/hooks";
 import { merge } from "es-toolkit";
-import { createContext, type PropsWithChildren, type SetStateAction, useCallback, useContext, useMemo } from "react";
+import { createContext, type PropsWithChildren, type SetStateAction, useContext, useMemo, useState } from "react";
 
 type MethodData = Record<string, any>;
 
@@ -13,29 +13,26 @@ export interface MethodDataContext {
 const MethodDataContext = createContext<MethodDataContext>(null as unknown as MethodDataContext);
 
 export const MethodDataProvider: React.FC<PropsWithChildren> = ({ children }) => {
-	const [params, setParams] = useDebouncedState<MethodData>({}, 1000);
+	const [params, setParams] = useState<MethodData>({});
 
-	const setParam: MethodDataContext["setParam"] = useCallback(
-		(field, value, index) => {
-			const sentIndex = index !== undefined;
-			const inOptions = field.startsWith("options");
+	const setParam: MethodDataContext["setParam"] = useDebouncedCallback((field, value, index) => {
+		const inOptions = field.startsWith("options");
+		const sentIndex = index !== undefined;
 
-			const fieldObj: Record<string, any> = {};
-			if (!sentIndex) {
-				fieldObj[field] = value;
+		const fieldObj: Record<string, any> = {};
+		if (!sentIndex) {
+			fieldObj[field] = value;
+		}
+
+		setParams(old => {
+			if (sentIndex) {
+				fieldObj[field] = (inOptions ? old.options : old)[field] ?? [];
+				fieldObj[field][index] = value;
 			}
 
-			setParams(old => {
-				if (sentIndex) {
-					fieldObj[field] = (inOptions ? old.options : old)[field] ?? [];
-					fieldObj[field][index] = value;
-				}
-
-				return merge(old, inOptions ? { options: fieldObj } : fieldObj);
-			});
-		},
-		[setParams],
-	);
+			return merge(old, inOptions ? { options: fieldObj } : fieldObj);
+		});
+	}, 500);
 
 	const methodData: MethodDataContext = useMemo(
 		() => ({
@@ -43,7 +40,7 @@ export const MethodDataProvider: React.FC<PropsWithChildren> = ({ children }) =>
 			setParam,
 			setParams,
 		}),
-		[params, setParam, setParams],
+		[params, setParam],
 	);
 
 	return <MethodDataContext.Provider value={methodData}>{children}</MethodDataContext.Provider>;

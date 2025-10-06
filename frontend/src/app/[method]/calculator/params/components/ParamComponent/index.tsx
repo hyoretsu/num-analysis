@@ -47,15 +47,14 @@ export interface GetParamComponentProps {
 	type: string;
 }
 
-export const getParamComponent = ({ label, name, setParam, t, type: typeO }: GetParamComponentProps) => {
+export const getParamComponent = ({ name, t, type: typeO, ...props }: GetParamComponentProps) => {
 	const { required, type, values } = getNameRequired(typeO);
 
 	return components.get(type)!({
-		label,
+		...props,
 		name,
 		placeholder: placeholders.get(name)?.toString(),
 		required,
-		setParam,
 		...(values?.length && {
 			values: values.map(value => ({
 				label: t(`params.${value}`),
