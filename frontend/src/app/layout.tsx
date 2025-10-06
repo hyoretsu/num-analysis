@@ -12,7 +12,7 @@ import "./globals.css";
 const roboto = Roboto({ subsets: ["latin"] });
 
 // Next.js
-const siteName = "UniDB";
+const siteName = "NumAnalysis";
 
 export const metadata: Metadata = {
 	appleWebApp: {
