@@ -31,5 +31,5 @@
 	},
 	"identifier": "com.hyoretsu.numanalysis",
 	"productName": "NumAnalysis",
-	"version": "1.0.0"
+	"version": "../package.json"
 }
