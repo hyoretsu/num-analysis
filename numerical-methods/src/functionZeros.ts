@@ -146,10 +146,23 @@ export const bisection: FunctionZeros.Simple = ({
 			condition2: fixNumber(condition2),
 		});
 
+		console.log({
+			interval: interval.map(number => fixNumber(number)),
+			iteration: iterations,
+			results: results.map(number => fixNumber(number)),
+			x: fixNumber(midPoint),
+			...(origFunc && { y: evaluate(origFunc, { x: midPoint }) }),
+			...(relativeError && { relativeError: fixNumber(relativeError) }),
+			condition1: fixNumber(condition1),
+			condition2: fixNumber(condition2),
+		});
+		console.log(iterations);
+
 		// Check if conditions are either disabled or true
 		const condition1Pass = !conditionsWhitelist[0] || condition1 < precision;
 		const condition2Pass = !conditionsWhitelist[1] || condition2 < precision;
 
+		console.log(iterations >= maxIterations);
 		if ((!bail && condition1Pass && condition2Pass) || (bail && (condition1Pass || condition2Pass)) || iterations >= maxIterations) {
 			break;
 		}

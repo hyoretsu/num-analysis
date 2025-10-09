@@ -1,3 +1,4 @@
+"use client";
 import type { MethodDataContext } from "@context/methodData";
 import { getNameRequired } from "@utils";
 import type { useTranslations } from "next-intl";
@@ -53,7 +54,7 @@ export const getParamComponent = ({ name, t, type: typeO, ...props }: GetParamCo
 	return components.get(type)!({
 		...props,
 		name,
-		placeholder: placeholders.get(name)?.toString(),
+		placeholder: placeholders.get(name.split("options.").at(-1)!)?.toString(),
 		required,
 		...(values?.length && {
 			values: values.map(value => ({

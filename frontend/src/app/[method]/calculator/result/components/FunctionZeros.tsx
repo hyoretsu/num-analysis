@@ -1,6 +1,7 @@
+"use client";
 import { fixNumber } from "@hyoretsu/utils";
 import { Stack, Table, Text } from "@mantine/core";
-import { useTranslations } from "next-intl";
+import type { useTranslations } from "next-intl";
 import type { FunctionZeros } from "numerical-methods";
 
 export interface FunctionZerosResultsProps {
@@ -8,6 +9,7 @@ export interface FunctionZerosResultsProps {
 	method: string;
 	methodParams: FunctionZeros.Params;
 	result: FunctionZeros.Result;
+	t: ReturnType<typeof useTranslations>;
 }
 
 const detailsOrder = [
@@ -22,9 +24,8 @@ const detailsOrder = [
 	"condition2",
 ];
 
-export function FunctionZerosResults({ details, method, methodParams, result }: FunctionZerosResultsProps) {
+export function FunctionZerosResults({ details, method, methodParams, result, t }: FunctionZerosResultsProps) {
 	const isSingleResult = method === "newtonRaphson";
-	const t = useTranslations(`methods.results.${method}`);
 
 	return (
 		<>

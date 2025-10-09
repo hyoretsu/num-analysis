@@ -1,7 +1,7 @@
 {
 	"name": "frontend",
 	"private": true,
-	"version": "1.0.0",
+	"version": "0.1.2",
 	"type": "module",
 	"scripts": {
 		"build": "next build --turbo",
@@ -9,6 +9,7 @@
 		"start": "next start",
 		"tad": "tauri android dev",
 		"tb": "tauri build",
+		"tba": "tauri android build",
 		"td": "tauri dev",
 		"tid": "tauri ios dev"
 	},

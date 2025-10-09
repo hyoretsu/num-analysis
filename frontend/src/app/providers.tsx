@@ -1,4 +1,5 @@
 "use client";
+import { ErrorProvider } from "@context/error";
 import { MethodDataProvider } from "@context/methodData";
 import { MantineProvider } from "@mantine/core";
 import { theme } from "@styles/theme";
@@ -15,7 +16,9 @@ export function Providers({ children, locale, messages }: ProvidersProps) {
 	return (
 		<NextIntlClientProvider locale={locale} messages={messages}>
 			<MantineProvider theme={theme}>
-				<MethodDataProvider>{children}</MethodDataProvider>
+				<ErrorProvider>
+					<MethodDataProvider>{children}</MethodDataProvider>
+				</ErrorProvider>
 			</MantineProvider>
 		</NextIntlClientProvider>
 	);

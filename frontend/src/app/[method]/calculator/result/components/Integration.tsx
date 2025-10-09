@@ -1,3 +1,4 @@
+"use client";
 import { Text } from "@mantine/core";
 import type { Integration } from "numerical-methods";
 

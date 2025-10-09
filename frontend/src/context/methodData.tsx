@@ -15,7 +15,12 @@ export const MethodDataProvider: React.FC<PropsWithChildren> = ({ children }) =>
 	const [params, setParams] = useState<MethodData>({});
 
 	const setParam: MethodDataContext["setParam"] = useCallback((field, value, index) => {
-		const inOptions = field.startsWith("options");
+		const parts = field.split("options.");
+		const inOptions = parts.length > 1;
+		if (inOptions) {
+			field = parts[1];
+		}
+
 		const sentIndex = index !== undefined;
 
 		const fieldObj: Record<string, any> = {};

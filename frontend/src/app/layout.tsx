@@ -52,8 +52,6 @@ export default async function RootLayout({ children }: PropsWithChildren) {
 	return (
 		<html className={roboto.className} lang={locale} {...mantineHtmlProps}>
 			<head>
-				<meta content={viewport.themeColor} name="theme-color" />
-
 				<meta
 					content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
 					name="viewport"

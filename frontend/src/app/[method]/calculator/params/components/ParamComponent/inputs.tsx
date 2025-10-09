@@ -1,3 +1,4 @@
+"use client";
 import { Checkbox, Flex, Select, TextInput } from "@mantine/core";
 import { digitFromSuperscript } from "@utils";
 import { parse } from "mathjs";

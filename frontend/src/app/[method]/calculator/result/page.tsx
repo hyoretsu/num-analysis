@@ -1,10 +1,11 @@
 "use client";
+import { useError } from "@context/error";
 import { useMethodData } from "@context/methodData";
 import { Accordion, Stack, Text, Title } from "@mantine/core";
 import { useTranslations } from "next-intl";
 import { useParams, useRouter } from "next/navigation";
 import { type AllMethods, allMethods, methodCategories } from "numerical-methods";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { resultComponents } from "./components";
 
 export default function Results() {
@@ -13,21 +14,37 @@ export default function Results() {
 	const params = useParams();
 	const method = params.method as AllMethods;
 
+	const { setErrors } = useError();
 	const { params: methodParams } = useMethodData();
 	const { replace } = useRouter();
 
 	const hasParams = methodParams && Object.keys(methodParams).length > 0;
+
 	useEffect(() => {
 		if (!hasParams) {
+			setErrors("noParams");
 			replace(`/${method}/calculator/params`);
 		}
-	}, [hasParams, method, replace]);
+	}, [hasParams, method, replace, setErrors]);
 
-	if (!hasParams) {
+	const [methodResults, setMethodResults] = useState<{ result: any; details: any[] }>();
+	useEffect(() => {
+		if (!hasParams) {
+			return;
+		}
+
+		try {
+			console.log(JSON.stringify(methodParams, null, 2));
+			setMethodResults(allMethods[method](methodParams as any) as any);
+		} catch {
+			setErrors("unexpected");
+			replace(`/${method}/calculator/params`);
+		}
+	}, [hasParams, method, methodParams, replace, setErrors]);
+
+	if (!hasParams || !methodResults) {
 		return null;
 	}
-
-	const methodResults = allMethods[method](methodParams as any) as { result: any; details: any[] };
 
 	return (
 		<Stack align="center" className="w-full md:w-[70%]">
@@ -67,6 +84,7 @@ export default function Results() {
 				...methodResults,
 				method,
 				methodParams,
+				t: (key: string) => t(`methods.results.${method}.${key}`),
 			})}
 		</Stack>
 	);

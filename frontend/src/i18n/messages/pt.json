@@ -12,8 +12,10 @@
 		},
 		"doolittleLuDecomposition": "Decomposição LU (Doolittle)",
 		"errors": {
+			"noParams": "Nenhum parâmetro fornecido, tente novamente.",
 			"required": "O campo \"{field}\" é obrigatório.",
-			"requiredMultiple": "Os campos {field} são obrigatórios."
+			"requiredMultiple": "Os campos {field} são obrigatórios.",
+			"unexpected": "Ocorreu um erro ao calcular os resultados. Cheque os parâmetros e tente novamente."
 		},
 		"falsePosition": "Falsa Posição",
 		"gaussianElimination": "Eliminação Gaussiana",

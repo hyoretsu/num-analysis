@@ -1,4 +1,5 @@
 "use client";
+import { useError } from "@context/error";
 import { useMethodData } from "@context/methodData";
 import { Accordion, Button, Text, Title } from "@mantine/core";
 import { isValidParam } from "@utils";
@@ -38,7 +39,20 @@ export default function ParamsPage() {
 		return { options, params };
 	}, [method]);
 
+	const { errors, setErrors } = useError();
 	const { params: inputParams, setParam, setParams } = useMethodData();
+
+	useEffect(() => {
+		if (!errors) {
+			return;
+		}
+
+		errors.forEach(error => {
+			toast.error(t(`errors.${error}`));
+		});
+
+		setErrors(undefined);
+	}, [errors, setErrors, t]);
 
 	// Initialize default params
 	useEffect(() => {
@@ -104,7 +118,7 @@ export default function ParamsPage() {
 								{options.map(([name, type]) =>
 									getParamComponent({
 										label: t(`params.${name}`),
-										name,
+										name: `options.${name}`,
 										setParam,
 										t,
 										type,

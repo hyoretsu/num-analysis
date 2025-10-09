@@ -1,3 +1,4 @@
+"use client";
 import { fixNumber } from "@hyoretsu/utils";
 import { Stack, Text } from "@mantine/core";
 import { parse, simplify } from "mathjs";
